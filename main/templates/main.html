@@ -3,7 +3,16 @@
 <style>
 table, th, td {
   border: 1px solid black;
+  border-spacing: 5px;
 }
+th, td {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: center;
+}
+
 </style>
 </head>
 <body>
@@ -24,10 +33,10 @@ table, th, td {
     <th>Amount</th>
   </tr>
   <tr>
-    <th>{{ item_name }}</th>
-    <th>{{ quality }}</th>
-    <th>{{ type }}</th>
-    <th>{{ description }}</th>
-    <th>{{ amount }}</th>
+    <td>{{ item_name }}</td>
+    <td>{{ quality }}</td>
+    <td>{{ type }}</td>
+    <td>{{ description }}</td>
+    <td>{{ amount }}</td>
   </tr>
 </table>
