@@ -122,9 +122,10 @@ tautan repositori: https://gi-foodinventory.adaptable.app/main/
         - ViewModel: Bertugas menjadi perantara antara model dan view, serta mengelola data yang ada dimodel dengan bentuk yang sesuai sebelum ditampilkan di View.<br>
         ->> Perbedaan utama dari MVVM adalah ViewModel berperan dalam mengelola logika antara model dan view dan umumnya digunakan dalam pengembangan aplikasi berbasis web dengan framework JavaScript. Pola arsitektur MVVM bersifat event-driven dan kurang idea untuk proyek kecil.<br>
 <br>
+<br>
 Referensi:<br>
-[w3school-html](https://www.w3schools.com/html/) 
-[MVC vs MVT](https://www.geeksforgeeks.org/difference-between-mvc-and-mvt-design-patterns/) 
-[MVC vs MVP vs MVVM](https://www.geeksforgeeks.org/difference-between-mvc-mvp-and-mvvm-architecture-pattern-in-android/) 
-[Django’s Request-Response Cycle](https://nitinnain.com/djangos-request-response-cycle/) 
+- https://www.w3schools.com/html/ <br>
+- https://www.geeksforgeeks.org/difference-between-mvc-and-mvt-design-patterns/ <br> 
+- https://www.geeksforgeeks.org/difference-between-mvc-mvp-and-mvvm-architecture-pattern-in-android/ <br>
+- https://nitinnain.com/djangos-request-response-cycle/ <br>
 
