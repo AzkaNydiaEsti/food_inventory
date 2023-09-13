@@ -2,7 +2,9 @@
  NPM     : 2206028970 <br>
  Kelas   : PBP E <br>
 
-tautan repositori: https://gi-foodinventory.adaptable.app/main/
+---
+
+https://gi-foodinventory.adaptable.app/main/
 
 ---
 
