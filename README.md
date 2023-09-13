@@ -107,21 +107,22 @@ tautan repositori: https://gi-foodinventory.adaptable.app/main/
         - Model: Berperan mengatur, memanipulasi, dan mengorganisasi data pada database.<br>
         - View: Bertugas menampilkan visualisasi dari data dan melakukan interaksi dengan User.<br>
         - Controller: Bertugas menjadi perantara antara model dan view. Controller mengatur alur aplikasi dan memberi respons sesuai perintah User.<br>
-        Perbedaan utama dari MVC adalah MVC merupakan pola yang lebih sederhana/umum dan menjadi pola yang umum dalam pengembangan perangkat lunak tradisional. Uniknya, walau controller menjadi jembatan antara model dan view, view tidak menyimpan informasi mengenai controller. MVC umumnya dipakai pada Ruby on Rails, Laravel (PHP).<br>
+        <br>Perbedaan utama dari MVC adalah MVC merupakan pola yang lebih sederhana/umum dan menjadi pola yang umum dalam pengembangan perangkat lunak tradisional. Uniknya, walau controller menjadi jembatan antara model dan view, view tidak menyimpan informasi mengenai controller. MVC umumnya dipakai pada Ruby on Rails, Laravel (PHP).<br>
     b. MVT (Model-View-Template) terdiri dari 3 bagian utama:<br>
         - Model: Berperan mengatur, memanipulasi, dan mengorganisasi data pada database.<br>
         - View: Bertugas menampilkan visualisasi dari data dan melakukan interaksi dengan User.<br>
-        - Template: Menggantikan peran controller dan berperan dalam mengatur bagaimana data akan tampil dari model ke dalam view menggunakan elemen-elemen HTML. Pada dasarnya, Template adalah kode HTML yang merender data.<br>
-        Perbedaan utama dari MVT adalah Template menggantikan controller dan digunakan dalam kerangka kerja Django untuk pengembangan aplikasi web berbasis Python. Template memungkinkan untuk memisahkan tampilan sehingga tampilan dapat dikembangkan menjadi lebih kompleks. Pola ini dapat dipakai untuk aplikasi kecil atau besar dan contohnya adalah Django.<br>
+        - Template: Menggantikan peran controller dan berperan dalam mengatur bagaimana data akan tampil dari model ke dalam view menggunakan 
+        elemen-elemen HTML. Pada dasarnya, Template adalah kode HTML yang merender data.<br>
+        <br>Perbedaan utama dari MVT adalah Template menggantikan controller dan digunakan dalam kerangka kerja Django untuk pengembangan aplikasi web berbasis Python. Template memungkinkan untuk memisahkan tampilan sehingga tampilan dapat dikembangkan menjadi lebih kompleks. Pola ini dapat dipakai untuk aplikasi kecil atau besar dan contohnya adalah Django.<br>
     c. MVVM (Model-View-ViewModel)<br>
         - Model: Berperan mengatur, memanipulasi, dan mengorganisasi data pada database.<br>
         - View: Bertugas menampilkan visualisasi dari data dan melakukan interaksi dengan User.<br>
         - ViewModel: Bertugas menjadi perantara antara model dan view, serta mengelola data yang ada dimodel dengan bentuk yang sesuai sebelum ditampilkan di View.<br>
-        Perbedaan utama dari MVVM adalah ViewModel berperan dalam mengelola logika antara model dan view dan umumnya digunakan dalam pengembangan aplikasi berbasis web dengan framework JavaScript. Pola arsitektur MVVM bersifat event-driven dan kurang idea untuk proyek kecil.<br>
+        <br> Perbedaan utama dari MVVM adalah ViewModel berperan dalam mengelola logika antara model dan view dan umumnya digunakan dalam pengembangan aplikasi berbasis web dengan framework JavaScript. Pola arsitektur MVVM bersifat event-driven dan kurang idea untuk proyek kecil.<br>
 <br>
-Referensi:
-- [w3schools/html](https://www.w3schools.com/html/) <br>
-- [MVC vs MVT](https://www.geeksforgeeks.org/difference-between-mvc-and-mvt-design-patterns/) <br>
-- [MVC vs MVP vs MVVM](https://www.geeksforgeeks.org/difference-between-mvc-mvp-and-mvvm-architecture-pattern-in-android/) <br>
-- [Django’s Request-Response Cycle](https://nitinnain.com/djangos-request-response-cycle/) <br>
+Referensi:<br>
+[w3schools/html](https://www.w3schools.com/html/) <br>
+[MVC vs MVT](https://www.geeksforgeeks.org/difference-between-mvc-and-mvt-design-patterns/) <br>
+[MVC vs MVP vs MVVM](https://www.geeksforgeeks.org/difference-between-mvc-mvp-and-mvvm-architecture-pattern-in-android/) <br>
+[Django’s Request-Response Cycle](https://nitinnain.com/djangos-request-response-cycle/) <br>
 
