@@ -4,6 +4,7 @@ from django.shortcuts import render
 def show_main(request):
     context = {
         'name': 'Azka Nydia Estiningtyas',
+        'npm': '2206028970',
         'class': 'PBP E',
         'item_name1': 'Adeptus Temptation',
         'quality1': '5-Star',
