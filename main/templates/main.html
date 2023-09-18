@@ -1,3 +1,5 @@
+{% extends 'base.html' %}
+
 <html>
 <head>
 <style>
@@ -51,10 +53,11 @@
 </style>
 </head>
 <body>
+{% block content %}
 
 <header>
   <h1>Genshin Impact</h1>
-  <h2>&#127841 Food Inventory &#127836</h1>
+  <h2>&#127841 Food Inventory &#127836</h2>
 </header>
 
 <h4>By</h4>
@@ -69,21 +72,28 @@
     <th>Description</th>
     <th>Amount</th>
   </tr>
-  <tr>
-    <td>{{ item_name1 }}</td>
-    <td>{{ quality1 }}</td>
-    <td>{{ type1 }}</td>
-    <td>{{ description1 }}</td>
-    <td>{{ amount1 }}</td>
-  </tr>
-  <tr>
-    <td>{{ item_name2 }}</td>
-    <td>{{ quality2 }}</td>
-    <td>{{ type2 }}</td>
-    <td>{{ description2 }}</td>
-    <td>{{ amount2 }}</td>
-  </tr>
+  {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
+
+  {% for product in Products %}
+    <tr>
+        <td>{{product.name}}</td>
+        <td>{{product.quality}}</td>
+        <td>{{product.type}}</td>
+        <td>{{product.description}}</td>
+        <td>{{product.mount}}</td>
+    </tr>
+  {% endfor %}
 </table>
 
+<br />
+
+<a href="{% url 'main:create_product' %}">
+    <button>
+        Add New Product
+    </button>
+</a>
+
+{% endblock content %}
 </body>
+
 </html>
