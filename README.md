@@ -145,3 +145,17 @@ Referensi:<br>
 - https://www.geeksforgeeks.org/difference-between-mvc-mvp-and-mvvm-architecture-pattern-in-android/ <br>
 - https://nitinnain.com/djangos-request-response-cycle/ <br>
 
+
+
+# Tugas 3 Checklist
+
+ - [x] Membuat input form untuk menambahkan objek model pada app sebelumnya. <br> 
+ - [x] Tambahkan 5 fungsi views untuk melihat objek yang sudah ditambahkan dalam format HTML, XML, JSON, XML by ID, dan JSON by ID. <br> 
+ - [x] Membuat routing URL untuk masing-masing views yang telah ditambahkan pada poin 2.<br> 
+ - [x] Menjawab beberapa pertanyaan berikut pada README.md pada root folder.<br> 
+    - Apa perbedaan antara form POST dan form GET dalam Django?<br> 
+    - Apa perbedaan utama antara XML, JSON, dan HTML dalam konteks pengiriman data?<br> 
+    - Mengapa JSON sering digunakan dalam pertukaran data antara aplikasi web modern?<br> 
+    - Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).<br> 
+ - [x] Mengakses kelima URL di poin 2 menggunakan Postman, membuat screenshot dari hasil akses URL pada Postman, dan menambahkannya ke dalam README.md.<br> 
+ - [x] Melakukan add-commit-push ke GitHub.<br> 

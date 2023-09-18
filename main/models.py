@@ -6,6 +6,6 @@ from django.db import models
 class Barang(models.Model):
     name = models.CharField(max_length=255)
     quality = models.TextField()
-    type = models.CharField(max_length=255)
+    type = models.CharField(max_length=105)
     description = models.TextField()
     amount = models.IntegerField()
