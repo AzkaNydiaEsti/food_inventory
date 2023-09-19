@@ -362,7 +362,8 @@ Checklist untuk tugas ini adalah sebagai berikut.<br>
  atas tabel data. Kalimat pesan boleh dikustomisasi sesuai dengan tema aplikasi, namun harus memiliki makna yang sama. <br>
     Pertama, saya menambahkan sebuah variabel ```jumlah_items``` yang berisi data jumlah data baru yang sudah di input pada ```views.py``` di fungsi ```show_main```. Lalu, saya menambahkan messagenya kedalam dictionary ```context``` sehingga koding terlihat seperti dibawah ini. Setelah itu, saya memperbarui isi html dengan memasukkan message yang telah dibuat kedalam ```main.html```.<br>
     
-    ```def show_main(request):
+    ```# menambah di views.py
+    def show_main(request):
     products = Barang.objects.all()
     jumlah_item = len(products)
     context = {
@@ -373,10 +374,10 @@ Checklist untuk tugas ini adalah sebagai berikut.<br>
         'total_items' : f'You have {jumlah_item} types of food items in here',
     } 
 
-    return render(request, "main.html", context)```
+    return render(request, "main.html", context)
 
     
-    ```# menambah di main.html
+    # menambah di main.html
     <p style="text-align: center;">{{ total_items }}</p>```
 
 Referensi: <br>
