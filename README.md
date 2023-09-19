@@ -358,9 +358,9 @@ Checklist untuk tugas ini adalah sebagai berikut.<br>
 
  # Bonus tugas 3
 
- -[x] Menambahkan pesan "Kamu menyimpan X item pada aplikasi ini" (dengan X adalah jumlah data item yang tersimpan pada aplikasi) dan menampilkannya di
+ - [x] Menambahkan pesan "Kamu menyimpan X item pada aplikasi ini" (dengan X adalah jumlah data item yang tersimpan pada aplikasi) dan menampilkannya di
  atas tabel data. Kalimat pesan boleh dikustomisasi sesuai dengan tema aplikasi, namun harus memiliki makna yang sama. <br>
-    Pertama, saya menambahkan sebuah variabel ```jumlah_items``` yang berisi data jumlah data baru yang sudah di input pada ```views.py``` di fungsi ```show_main```. Lalu, saya menambahkan messagenya kedalam dictionary ```context``` sehingga koding terlihat seperti dibawah ini.<br>
+    Pertama, saya menambahkan sebuah variabel ```jumlah_items``` yang berisi data jumlah data baru yang sudah di input pada ```views.py``` di fungsi ```show_main```. Lalu, saya menambahkan messagenya kedalam dictionary ```context``` sehingga koding terlihat seperti dibawah ini. Setelah itu, saya memperbarui isi html dengan memasukkan message yang telah dibuat kedalam ```main.html```.<br>
     
     ```def show_main(request):
     products = Barang.objects.all()
@@ -375,9 +375,9 @@ Checklist untuk tugas ini adalah sebagai berikut.<br>
 
     return render(request, "main.html", context)```
 
-    Setelah itu, saya memperbarui isi html dengan memasukkan message yang telah dibuat kedalam ```main.html``` .
     
-    ```<p style="text-align: center;">{{ total_items }}</p>```
+    ```# menambah di main.html
+    <p style="text-align: center;">{{ total_items }}</p>```
 
 Referensi: <br>
 - https://docs.djangoproject.com/en/4.2/topics/forms/
