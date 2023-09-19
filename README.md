@@ -328,15 +328,16 @@ Checklist untuk tugas ini adalah sebagai berikut.<br>
 
  - [x] Menjawab beberapa pertanyaan berikut pada README.md pada root folder.<br> 
     - Apa perbedaan antara form POST dan form GET dalam Django?<br> 
-        POST dan GET merupakan metode request HTTP yang dipakai untuk menangani form. Terdapat beberapa perbedaan yang dimiliki POST dan GET. Pertama, perbedaan pada tujuan penggunaannya. POST umumnya digunakan saat sebuah permintaan akan melakukan perubahan pada database, sedangkan GET dipakai saat tidak ingin melakukan perubahan pada database, melainkan untuk permintaan yang hanya membaca data seperti browser request. Kedua, terdapat juga perbedaan pada aspek keamanan dimana POST lebih aman dibanding GET. Hal ini membuat GET tidak cocok digunakan untuk data sensitif seperti password form dan admin form karena informasi tersebut dapat terlihat di URL, tetapi pengiriman data sensitif akan lebih aman dengan POST karena data tersebut tidak terekspose secara terbuka. Terakhir, Kapasitas data dari POST dan GET juga berbeda. POST tidak memiliki batasan panjang URL dan dapat mengirim jumlah data dalam kuantitas yang banyak, tetapi terdapat batasan jumlah data yang dapat dikirim dengan GET. 
+        POST dan GET merupakan metode request HTTP yang dipakai untuk menangani form. Terdapat beberapa perbedaan yang dimiliki POST dan GET. Pertama, perbedaan pada tujuan penggunaannya. POST umumnya digunakan saat sebuah permintaan akan melakukan perubahan pada database, sedangkan GET dipakai saat tidak ingin melakukan perubahan pada database, melainkan untuk permintaan yang hanya membaca data seperti browser request. Kedua, terdapat juga perbedaan pada aspek keamanan dimana POST lebih aman dibanding GET. Hal ini membuat GET tidak cocok digunakan untuk data sensitif seperti password form dan admin form karena informasi tersebut dapat terlihat di URL, tetapi pengiriman data sensitif akan lebih aman dengan POST karena data tersebut tidak terekspose secara terbuka. Terakhir, Kapasitas data dari POST dan GET juga berbeda. POST tidak memiliki batasan panjang URL dan dapat mengirim jumlah data dalam kuantitas yang banyak, tetapi terdapat batasan jumlah data yang dapat dikirim dengan GET.<br> 
     <br> 
     - Apa perbedaan utama antara XML, JSON, dan HTML dalam konteks pengiriman data?<br> 
         1. XML (eXtensible Markup Language) merupakan bahasa markup yang dipakai untuk menyimpan atau mengirim data antar aplikasi. XML memiliki fleksibilitas yang tinggi dalam mendefinisikan format data, tetapi memiliki peraturan yang ketat perihal sintaksis.<br> 
         2. JSON (JavaScript Object Notation) merupakan bahasa yang berfungsi mengirim data melalui internet antar server dan aplikasi, tetapi dengan format data yang lebih sederhana dan ringan. Bahasa ini mudah untuk di pahami dan lakukan sehingga populer digunakan sebagai format data dalam API.  <br> 
         3. HTML (HyperText Markup Language) merupakan bahasa markup yang berfungsi untuk menampilkan konten web atau visual yang akan muncul di browser. HTML menyusun tampilannya menggunakan elemen seperti tag dan atribut. HTML memiliki aturan sintaksis yang ketat, tetapi terdapat banyak elemen bawaan sehingga tampilan dari laman web fleksible untuk diubah sesuai keinginan.<br> 
-<br> 
+        <br> 
     - Mengapa JSON sering digunakan dalam pertukaran data antara aplikasi web modern?<br> 
-        Karena terdapat beberapa keunggulan dari JSON ketimbang bahasa lain. Pertama, JSON lebih mudah untuk dibaca dan ditulis sehingga akan lebih mudah bagi manusia untuk membaca dan melakukan perubahan. Kedua, JSON juga lebih ringkas dan padat isinya sehingga pengiriman data menjadi lebih efisien dan ukuran data yang dipindahkan berkurang. Terakhir, JSON juga kompatibel dengan JavaScript sehingga mudah untuk dikembangkan dan diintegrasi dengan aplikasi lain.<br> 
+        Karena terdapat beberapa keunggulan dari JSON ketimbang bahasa lain. Pertama, JSON lebih mudah untuk dibaca dan ditulis sehingga akan lebih mudah bagi manusia untuk membaca dan melakukan perubahan. Kedua, JSON juga lebih ringkas dan padat isinya sehingga pengiriman data menjadi lebih efisien dan ukuran data yang dipindahkan berkurang. Terakhir, JSON juga kompatibel dengan JavaScript sehingga mudah untuk dikembangkan dan diintegrasi dengan aplikasi lain.<br>
+        <br> 
     - Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).<br> 
         Telah dijelaskan pada checklist diatas<br> 
 
@@ -359,5 +360,5 @@ Checklist untuk tugas ini adalah sebagai berikut.<br>
 Referensi: <br>
 - https://docs.djangoproject.com/en/4.2/topics/forms/
 - https://www.deltaxml.com/blog/xml/whats-the-relationship-between-xml-json-html-and-the-internet/
-- https://www.linkedin.com/advice/0/what-advantages-disadvantages-using-json-vs-xml#:~:text=JSON%20is%20often%20the%20preferred,and%20efficiency%20of%20data%20processing.
+- https://www.linkedin.com/advice/0/what-advantages-disadvantages-using-json-vs-xml.
 
