@@ -343,9 +343,8 @@ Checklist untuk tugas ini adalah sebagai berikut.<br>
 
  - [x] Mengakses kelima URL di poin 2 menggunakan Postman, membuat screenshot dari hasil akses URL pada Postman, dan menambahkannya ke dalam README.md.<br>
     - HTML<br>
-    ![HTML #1](https://github.com/AzkaNydiaEsti/food_inventory/assets/124995308/799b7d89-f316-4a82-8ae3-cf2d9d48b1c5)<br>
-    ![HTML #2](https://github.com/AzkaNydiaEsti/food_inventory/assets/124995308/2c123bfd-b4fa-414f-895f-1eb90ef188e2)<br>
-    ![HTML #3](https://github.com/AzkaNydiaEsti/food_inventory/assets/124995308/be8c8309-bb43-4b2b-bb18-db23678b12fc)<br>
+    ![HTML #1](https://github.com/AzkaNydiaEsti/food_inventory/assets/124995308/81f76fac-f710-4d6e-ad5a-9bbb29ad4add)<br>
+    ![HTML #2](https://github.com/AzkaNydiaEsti/food_inventory/assets/124995308/69b3a57b-3c58-4771-a89f-8eac1675d69f)<br>
     - XML <br>
     ![XML](https://github.com/AzkaNydiaEsti/food_inventory/assets/124995308/b8b56b5a-768a-43cf-acb4-fd18fd5a98b7)<br>
     - JSON <br>
@@ -359,8 +358,10 @@ Checklist untuk tugas ini adalah sebagai berikut.<br>
 
  # Bonus tugas 3
 
- -[x] Menambahkan pesan "Kamu menyimpan X item pada aplikasi ini" (dengan X adalah jumlah data item yang tersimpan pada aplikasi) dan menampilkannya di atas tabel data. Kalimat pesan boleh dikustomisasi sesuai dengan tema aplikasi, namun harus memiliki makna yang sama. <br>
-    Pertama, saya menambahkan sebuah variabel ```jumlah_items``` yang berisi data jumlah data baru yang sudah di input pada ```views.py```. Lalu, saya menambahkan messagenya kedalam dictionary ```context``` sehingga koding terlihat seperti dibawah ini.
+ -[x] Menambahkan pesan "Kamu menyimpan X item pada aplikasi ini" (dengan X adalah jumlah data item yang tersimpan pada aplikasi) dan menampilkannya di
+ atas tabel data. Kalimat pesan boleh dikustomisasi sesuai dengan tema aplikasi, namun harus memiliki makna yang sama. <br>
+    Pertama, saya menambahkan sebuah variabel ```jumlah_items``` yang berisi data jumlah data baru yang sudah di input pada ```views.py``` di fungsi ```show_main```. Lalu, saya menambahkan messagenya kedalam dictionary ```context``` sehingga koding terlihat seperti dibawah ini.<br>
+    
     ```def show_main(request):
     products = Barang.objects.all()
     jumlah_item = len(products)
@@ -370,14 +371,13 @@ Checklist untuk tugas ini adalah sebagai berikut.<br>
         'class': 'PBP E',
         'products' : products,
         'total_items' : f'You have {jumlah_item} types of food items in here',
-    }
+    } 
 
     return render(request, "main.html", context)```
 
-    Setelah itu, saya memperbarui isi html dengan memasukkan message kedalam ```main.html```.
-    ```...
-    <p style="text-align: center;">{{ total_items }}</p>
-    ...```
+    Setelah itu, saya memperbarui isi html dengan memasukkan message yang telah dibuat kedalam ```main.html``` .
+    
+    ```<p style="text-align: center;">{{ total_items }}</p>```
 
 Referensi: <br>
 - https://docs.djangoproject.com/en/4.2/topics/forms/
