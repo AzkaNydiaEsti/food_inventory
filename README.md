@@ -172,8 +172,7 @@ Checklist untuk tugas ini adalah sebagai berikut.<br>
     ```
 
     Setelah itu, saya menambahkan fungsi baru dengan nama ```create_product``` pada file yang sama yang akan menerima parameter ```request```. fungsi ini yang akan membuat supaya data yang saya masukkan pada input form akan tersimpan dan menambahkan data produk baru saat klik button submit.
-    ```
-    def create_product(request):
+    ```def create_product(request):
     form = ItemForm(request.POST or None)
 
     if form.is_valid() and request.method == "POST":
@@ -181,21 +180,19 @@ Checklist untuk tugas ini adalah sebagai berikut.<br>
         return HttpResponseRedirect(reverse('main:show_main'))
 
     context = {'form': form}
-    return render(request, "create_product.html", context)```
+    return render(request, "create_product.html", context)
+    ```
 
     saya juga menambahkan ```products = Barang.objects.all()``` pada fungsi ```show_main``` dan menambahkan ```'products' : products,``` pada context supaya input data baru yang tersimpan muncul di ```main.html```.
 
     Karena saya menambah fungsi baru, maka pada saya melakukan routing URL didalam ```urls.py``` dengan menambah import dan path url funsgi 
     ```create_product``` pada ```urlpatterns```.
-    ```
-    ...
-    from main.views import show_main, create_product
-    ...```
+
+    ```from main.views import show_main, create_product```
 
     ```urlpatterns = [
         path('', show_main, name='show_main'),
         path('create-product', create_product, name='create_product'),
-        ...
     ]```
 
     Setelah itu, saya membuat file HTML baru dengan nama ```create_product.html``` pada satu direktori dengan ```main.html``` supaya dapat menginput form baru.
@@ -222,6 +219,7 @@ Checklist untuk tugas ini adalah sebagai berikut.<br>
     ```
 
     Lalu pada main.html, saya menambahkan modifikasi supaya input yang dibuat sebemulnya dan button untuk menmbah input dapat muncul. 
+    
     ```
     <table 
     class="center" 
