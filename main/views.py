@@ -8,11 +8,13 @@ from django.core import serializers
 
 def show_main(request):
     products = Barang.objects.all()
+    jumlah_item = len(products)
     context = {
         'name': 'Azka Nydia Estiningtyas',
         'npm': '2206028970',
         'class': 'PBP E',
         'products' : products,
+        'total_items' : f'You have {jumlah_item} types of food items in here',
     }
 
     return render(request, "main.html", context)

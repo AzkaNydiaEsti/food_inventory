@@ -218,7 +218,7 @@ Checklist untuk tugas ini adalah sebagai berikut.<br>
     {% endblock %}
     ```
 
-    Lalu pada main.html, saya menambahkan modifikasi supaya input yang dibuat sebemulnya dan button untuk menmbah input dapat muncul. 
+    Lalu pada ```main.html```, saya menambahkan modifikasi supaya input yang dibuat sebemulnya dan button untuk menmbah input dapat muncul. 
     
     ```
     <table 
@@ -356,6 +356,28 @@ Checklist untuk tugas ini adalah sebagai berikut.<br>
     ![JSON by ID](https://github.com/AzkaNydiaEsti/food_inventory/assets/124995308/67d319b7-94fc-4766-bcc1-9908adbaefdf)<br>
     
  - [x] Melakukan add-commit-push ke GitHub.<br> 
+
+ # Bonus tugas 3
+
+ -[x] Menambahkan pesan "Kamu menyimpan X item pada aplikasi ini" (dengan X adalah jumlah data item yang tersimpan pada aplikasi) dan menampilkannya di atas tabel data. Kalimat pesan boleh dikustomisasi sesuai dengan tema aplikasi, namun harus memiliki makna yang sama. <br>
+    Pertama, saya menambahkan sebuah variabel ```jumlah_items``` yang berisi data jumlah data baru yang sudah di input pada ```views.py```. Lalu, saya menambahkan messagenya kedalam dictionary ```context``` sehingga koding terlihat seperti dibawah ini.
+    ```def show_main(request):
+    products = Barang.objects.all()
+    jumlah_item = len(products)
+    context = {
+        'name': 'Azka Nydia Estiningtyas',
+        'npm': '2206028970',
+        'class': 'PBP E',
+        'products' : products,
+        'total_items' : f'You have {jumlah_item} types of food items in here',
+    }
+
+    return render(request, "main.html", context)```
+
+    Setelah itu, saya memperbarui isi html dengan memasukkan message kedalam ```main.html```.
+    ```...
+    <p style="text-align: center;">{{ total_items }}</p>
+    ...```
 
 Referensi: <br>
 - https://docs.djangoproject.com/en/4.2/topics/forms/
