@@ -172,7 +172,8 @@ Checklist untuk tugas ini adalah sebagai berikut.<br>
     ```
 
     Setelah itu, saya menambahkan fungsi baru dengan nama ```create_product``` pada file yang sama yang akan menerima parameter ```request```. fungsi ini yang akan membuat supaya data yang saya masukkan pada input form akan tersimpan dan menambahkan data produk baru saat klik button submit.
-    ```def create_product(request):
+    ```
+    def create_product(request):
     form = ItemForm(request.POST or None)
 
     if form.is_valid() and request.method == "POST":
@@ -229,7 +230,8 @@ Checklist untuk tugas ini adalah sebagai berikut.<br>
     margin-left:auto;
     margin-right:auto;
     border-spacing: 5px;
-    text-align: center;">
+    text-align: center;"
+    border: 3px solid cadetblue;">
     <tr 
     style="background-color: #455359;
     color: antiquewhite;">
