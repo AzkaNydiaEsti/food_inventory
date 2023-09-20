@@ -191,14 +191,17 @@ Checklist untuk tugas ini adalah sebagai berikut.<br>
 
     ```from main.views import show_main, create_product```
 
-    ```urlpatterns = [
+    ```
+    urlpatterns = [
         path('', show_main, name='show_main'),
         path('create-product', create_product, name='create_product'),
-    ]```
+    ]
+    ```
 
     Setelah itu, saya membuat file HTML baru dengan nama ```create_product.html``` pada satu direktori dengan ```main.html``` supaya dapat menginput form baru.
 
-    ```{% extends 'base.html' %} 
+    ```
+    {% extends 'base.html' %} 
 
     {% block content %}
     <h1>Add New Product</h1>
