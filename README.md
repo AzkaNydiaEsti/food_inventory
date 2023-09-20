@@ -186,7 +186,7 @@ Checklist untuk tugas ini adalah sebagai berikut.<br>
 
     saya juga menambahkan ```products = Barang.objects.all()``` pada fungsi ```show_main``` dan menambahkan ```'products' : products,``` pada context supaya input data baru yang tersimpan muncul di ```main.html```.
 
-    Karena saya menambah fungsi baru, maka pada saya melakukan routing URL didalam ```urls.py``` dengan menambah import dan path url funsgi 
+    Karena saya menambah fungsi baru, maka pada saya melakukan routing URL didalam ```urls.py``` dengan menambah import dan path url fungsi 
     ```create_product``` pada ```urlpatterns```.
 
     ```from main.views import show_main, create_product```
@@ -222,7 +222,7 @@ Checklist untuk tugas ini adalah sebagai berikut.<br>
     {% endblock %}
     ```
 
-    Lalu pada ```main.html```, saya menambahkan modifikasi supaya input yang dibuat sebemulnya dan button untuk menmbah input dapat muncul. 
+    Lalu pada ```main.html```, saya menambahkan modifikasi supaya input yang dibuat sebelumnya dan button untuk menambah input dapat muncul. 
     
     ```
     <table 
@@ -284,16 +284,6 @@ Checklist untuk tugas ini adalah sebagai berikut.<br>
         }
 
         return render(request, "main.html", context)
-
-    def create_product(request):
-        form = ItemForm(request.POST or None)
-
-        if form.is_valid() and request.method == "POST":
-            form.save()
-            return HttpResponseRedirect(reverse('main:show_main'))
-
-        context = {'form': form}
-        return render(request, "create_product.html", context)
 
     def show_xml(request):
         data = Barang.objects.all()
