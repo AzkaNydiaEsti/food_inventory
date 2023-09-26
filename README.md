@@ -494,9 +494,9 @@ Checklist untuk tugas ini adalah sebagai berikut:
         Cookies adalah data yang disimpan dalam web server selama periode tertentu setelah User melakukan login dalam aplikasi. Penggunaan cookies umumnya untuk otentikasi,personalisasi, dan managemen sesi. Saat User melakukan login, sebuah cookie session akan dibuat untuk User tersebut, dan Django akan menggunakan cookie ini untuk menyimpan informasi yang diinput oleh User dalam bentuk data sesi. Informasi yang disimpan dalam sesi dapat bervariasi, termasuk nama User atau preferensi User. Data sesi ini dapat diakses oleh User dan dapat dihapus baik secara manual oleh User atau secara otomatis dalam periode tertentu. Penggunaan cookies untuk mengelola sesi User memungkinkan aplikasi Django untuk menjaga status User, mengidentifikasi User yang masuk, dan menyimpan informasi penting lainnya selama User sedang login<br>
         <br> 
     -  Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai? <br> 
-        Penggunaan cookies aman jika dilindungi dengan baik, tetapi terdapat beberapa risiko saat menggunakan cookies, seperti berikut: 
+        Penggunaan cookies aman jika dilindungi dengan baik, tetapi terdapat beberapa risiko saat menggunakan cookies, seperti berikut: <br>
             1. Kebocoran data: Karena cookies menyimpan informasi dari User dan kadang termasuk data sensitif seperti otentifikasi User sehingga terdapat potensi risiko privasi untuk data tersebut diambil saat cookies diakses oleh Penyerang atau hacker. <br>
-            2. Cross-Site Scripting (XSS): Saat penyerang melakukan serangan XSS, mereka dapat menyisipkan script jahat kedalam aplikasi dan mengakses cookies User sehingga dapat masuk kedalam aplikasi sebagai User.
+            2. Cross-Site Scripting (XSS): Saat penyerang melakukan serangan XSS, mereka dapat menyisipkan script jahat kedalam aplikasi dan mengakses cookies User sehingga dapat masuk kedalam aplikasi sebagai User.<br>
             3. Cross-Site Request Forgery (CSRF): Penyerang dapat memaksa User yang sudah terautentikasi untuk melakukan request tanpa persetujuan User. <br>
             4. Session Hijacking: Cookies User yang berhasil dicuri dapat digunakan oleh penyerang untuk masuk aplikasi dan mengambil alih User session. <br>
             <br>
