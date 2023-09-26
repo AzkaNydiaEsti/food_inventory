@@ -392,7 +392,7 @@ Checklist untuk tugas ini adalah sebagai berikut:
 
 - [x] Mengimplementasikan fungsi registrasi, login, dan logout untuk memungkinkan pengguna untuk mengakses aplikasi sebelumnya dengan lancar. <br>
     <br>
-    Pertama, saya menjalankan virtual enviorment dulu menggunakan ```env\Scripts\activate.bat```. Lalu, saya meng-import redirect, UserCreationForm, dan messages untuk memudahkan pembuatan formulir register dan menambahkan fungsi register pada ```views.py``` di main supaya User yang sudah registrasi akan dibuat dan tersimpan akunnya saat klik submit. Berikut cuplikan kode untuk fungsi register.<br>
+    Pertama, saya menjalankan virtual enviorment dulu menggunakan ```env\Scripts\activate.bat```. Lalu, saya meng-import ```redirect```, ```UserCreationForm```, dan ```messages``` untuk memudahkan pembuatan formulir register dan menambahkan fungsi register pada ```views.py``` di main supaya User yang sudah registrasi akan dibuat dan tersimpan akunnya saat klik submit. Berikut cuplikan kode untuk fungsi ```register```.<br>
     ```
     def register(request):
     form = UserCreationForm()
@@ -407,12 +407,12 @@ Checklist untuk tugas ini adalah sebagai berikut:
     return render(request, 'register.html', context)
     ```
     
-    Setelah itu, saya membuat file html bernama ```register.html``` untuk membuat laman register dimana terdapat formulir untuk membuat akun didalam folder template di main. Setelah fungsi request selesai dibuat, saya import fungsi ```register``` dan menambahkan path urlnya kedalam urls.py supaya dapat diakses.<br>
+    Setelah itu, saya membuat file html bernama ```register.html``` untuk membuat laman register dimana terdapat formulir yang perlu diinput untuk membuat akun didalam folder ```templates``` di main. Setelah fungsi request selesai dibuat, saya import fungsi ```register``` dan menambahkan path urlnya kedalam ```urls.py``` supaya dapat diakses.<br>
     ```
     path('register/', register, name='register'),
     ```
 
-    Kedua, saya mengimplementasikan login dengan meng-import ```authenticate``` dan ```login``` untuk memudahkan melakukan autentikasi akun User saat Login, serta membuat fungsi login di ```views.py```.<br>
+    Kedua, saya mengimplementasikan login dengan meng-import ```authenticate``` dan ```login``` untuk memudahkan melakukan autentikasi akun User saat Login, serta membuat fungsi ```login_user``` di ```views.py```.<br>
     ```
     def login_user(request):
     if request.method == 'POST':
@@ -445,11 +445,14 @@ Checklist untuk tugas ini adalah sebagai berikut:
     path('logout/', logout_user, name='logout'),
     ```
 
-    Walaupun ketiga dungsi sudah dibuat dan dapat diakses, aksesnya User masih sama, yaitu bisa mengakses laman utama tanpa login sehingga saya import ```login_required``` dan menambahkan ```@login_required(login_url='/login')``` di atas fungsi ```show_main``` supaya akses lama utama hanya dapat dibuka untuk User yang sudah di autentikasi.<br>
+    Walaupun ketiga dungsi sudah dibuat dan dapat diakses, aksesnya User masih sama, yaitu bisa mengakses laman utama tanpa login sehingga saya perlu import ```login_required``` dan menambahkan ```@login_required(login_url='/login')``` di atas fungsi ```show_main``` supaya akses lama utama hanya dapat dibuka untuk User yang sudah di autentikasi.<br>
 
-    Lalu, saya import ```datetime``` dan membuat cookie bernama ```last_login``` didalam fungsi ```login_user``` untuk mencatat kapan User terakhir login. Berikut kode untuk menambahkan cookie ```response.set_cookie('last_login', str(datetime.datetime.now()))```. Supaya last_login muncul di laman utama, maka saya menambahkannya di ```context``` dalam fungsi ```show_main``` menggunakan ```'last_login': request.COOKIES['last_login'],```. Supaya cookie User tidak dapat diakses User lain, saya menambahkan kode ``` response.delete_cookie('last_login')``` di fungsi ```logout``` agar cookie terhapus saat User logout. Lalu, last_login saya masukkan kedalam html supaya dapat dilihat oleh User.<br>
+    Lalu, saya import ```datetime``` dan membuat cookie bernama ```last_login``` didalam fungsi ```login_user``` untuk mencatat kapan User terakhir login. Berikut kode untuk menambahkan cookie ```response.set_cookie('last_login', str(datetime.datetime.now()))```. <br>
+    
+    Supaya last_login muncul di laman utama, maka saya menambahkannya di ```context``` dalam fungsi ```show_main``` menggunakan kode ```'last_login': request.COOKIES['last_login'],``` dan agar cookie User tidak dapat diakses User lain, saya menambahkan kode ``` response.delete_cookie('last_login')``` di fungsi ```logout``` agar cookie terhapus saat User logout. Lalu, ```last_login``` saya panggil kedalam html supaya dapat dilihat oleh User.<br>
 
 - [x] Membuat dua akun pengguna dengan masing-masing tiga dummy data menggunakan model yang telah dibuat pada aplikasi sebelumnya untuk setiap akun di lokal. <br>
+    Pada dua foto berikut adalah akun User yang saya buat dengan masing-masing memiliki3 jenis makanan berbeda.
     ![akun #1](https://github.com/AzkaNydiaEsti/food_inventory/assets/124995308/9c88a3ef-16d1-4a23-9a4f-b3c2840b7fef)<br>
     ![akun #2](https://github.com/AzkaNydiaEsti/food_inventory/assets/124995308/6741a6bf-7253-4f9d-ac20-7f664002a176)<br>
 
@@ -459,7 +462,7 @@ Checklist untuk tugas ini adalah sebagai berikut:
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     ```
     
-    Setelah itu, saya menambah kode di fungsi create_product supaya Item yang ditambahkan ditandai bahwa itu milik User yang sedang login. <br>
+    Setelah itu, saya menambah kode di fungsi ```create_product``` supaya Item yang ditambahkan ditandai bahwa itu milik User yang sedang login. <br>
     ```
     def create_product(request):
         form = ProductForm(request.POST or None)
@@ -474,6 +477,7 @@ Checklist untuk tugas ini adalah sebagai berikut:
     Saya juga mengubah isi dari fungsi ```show_main``` di ```views.py``` dengan menggantikan isi variabel product dengan ``` products = Product.objects.filter(user=request.user)``` dan mengubah isi nama di context dengan ```'name': request.user.username,```. Hal ini dilakukan supaya item dan nama yang muncul didalam adalah punya User yang sedang login. Lalu, saya menyimpan perubahan menggunakan makemigrations dan migrate di cmd.<br>
 
 - [x] Menampilkan detail informasi pengguna yang sedang logged in seperti username dan menerapkan ```cookies``` seperti ```last login``` pada halaman utama aplikasi. <br>
+    Pada foto dibawah, Infomasi usernama saya taruh diatas dan last login saya taruh dibawah button add item.
     ![akun #1](https://github.com/AzkaNydiaEsti/food_inventory/assets/124995308/9c88a3ef-16d1-4a23-9a4f-b3c2840b7fef)<br>
 
 - [x] Menjawab beberapa pertanyaan berikut pada ```README.md``` pada root folder (silakan modifikasi ```README.md``` yang telah kamu buat sebelumnya; tambahkan subjudul untuk setiap tugas). <br>
@@ -500,6 +504,7 @@ Checklist untuk tugas ini adalah sebagai berikut:
         Telah dijelaskan pada checklist diatas<br>
 
 - [x] Melakukan ```add```-```commit```-```push``` ke GitHub. <br>
+    Saya melakukan ```git add .``` , ```git commit -m "<>"```, dan ```git push -u origin main``` setelah semua koding selesai supaya di-update di github.<br>
 
 Referensi
 - https://www.javatpoint.com/django-usercreationform
