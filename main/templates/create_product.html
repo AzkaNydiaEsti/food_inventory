@@ -1,7 +1,11 @@
 {% extends 'base.html' %} 
 
 {% block content %}
-<h1>Add New Product</h1>
+<h1 style="background-color: #91BEDC;
+padding: 20px;
+text-align: center;
+color: white;
+font-family: Georgia, 'Times New Roman', Times, serif;">Add New Item</h1>
 
 <form method="POST">
     {% csrf_token %}
@@ -15,5 +19,15 @@
         </tr>
     </table>
 </form>
+
+<div style="padding: 2px;
+background-color: #C7DBE9;
+margin-top: 5%;
+margin-bottom: 0%;
+text-align: center;
+font-family: 'Courier New', Courier, monospace;">
+    <h4>By</h4>
+    <h4>Azka Nydia E - 2206028970</h4>
+</div>
 
 {% endblock %}

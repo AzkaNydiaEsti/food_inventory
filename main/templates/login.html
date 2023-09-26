@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+{% block meta %}
+    <title>Login</title>
+    
+    <style>
+        /* beberapa ambil dari laman https://codepen.io/fghty/pen/PojKNEG */
+        .box{
+            height: 520px;
+            width: 350px;
+            background-color: aliceblue;
+            position: absolute;
+            transform: translate(-50%,-50%);
+            top: 50%;
+            left: 50%;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.1);
+            box-shadow: 0 0 40px rgba(8,7,16,0.6);
+            padding: 30px 30px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        input{
+            display: block;
+            height: 30px;
+            width: 300px;
+            background-color: rgba(255,255,255,0.07);
+            border-radius: 3px;
+            padding: 0 10px;
+            margin-top: 8px;
+            font-size: 14px;
+            font-weight: 300;
+        }
+        .login_btn{
+            display: flexbox;
+            margin-top: 50px;
+            width : 250px;
+            height : 30px;
+            background-color: #ffffff;
+            color: #080710;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-left: 0%;
+            margin-right: 0%;
+        }
+        label {
+            display: block;
+            margin-top: 30px;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        .rectangle {
+            height: 520px;
+            width: 350px;
+            background-color: aliceblue;
+            border-radius: 10px;
+        }
+    </style>
+{% endblock meta %}
+
+{% block content %}
+<body class = "box">
+<div class = "login">
+
+    <h1 style="
+    background-color: #91BEDC;
+    padding: 10px;
+    text-align: center;
+    font-size: 50px;
+    color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;"
+    >Login</h1>
+
+    <form method="POST" action="">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <label>Username: </label>
+                <input type="text" name="username" placeholder="Username" class="form-control">
+            </tr>
+                    
+            <tr>
+                <label>Password: </label>
+                <input type="password" name="password" placeholder="Password" class="form-control">
+            </tr>
+
+            <tr>
+                <td></td>
+                <input class="login_btn" type="submit" value="Login">
+            </tr>
+        </table>
+    </form>
+
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}     
+        
+    Don't have an account yet? <a href="{% url 'main:register' %}">Register Now</a>
+
+</div>
+</body>
+
+{% endblock content %}

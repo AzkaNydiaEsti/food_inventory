@@ -8,6 +8,7 @@
 https://gi-foodinventory.adaptable.app/main/
 
 ---
+
 # Tugas 2 Checklist
 Checklist untuk tugas ini adalah sebagai berikut.<br>
  - [x] Membuat sebuah proyek Django baru.<br>
@@ -380,3 +381,125 @@ Referensi: <br>
 - https://www.deltaxml.com/blog/xml/whats-the-relationship-between-xml-json-html-and-the-internet/
 - https://www.linkedin.com/advice/0/what-advantages-disadvantages-using-json-vs-xml.
 
+
+---
+
+# Tugas 4 Checklist
+
+---
+
+Checklist untuk tugas ini adalah sebagai berikut:
+
+- [x] Mengimplementasikan fungsi registrasi, login, dan logout untuk memungkinkan pengguna untuk mengakses aplikasi sebelumnya dengan lancar. <br>
+    <br>
+    Pertama, saya menjalankan virtual enviorment dulu menggunakan ```env\Scripts\activate.bat```. Lalu, saya meng-import redirect, UserCreationForm, dan messages untuk memudahkan pembuatan formulir register dan menambahkan fungsi register pada ```views.py``` di main supaya User yang sudah registrasi akan dibuat dan tersimpan akunnya saat klik submit. Berikut cuplikan kode untuk fungsi register.<br>
+    ```
+    def register(request):
+    form = UserCreationForm()
+
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your account has been successfully created!')
+            return redirect('main:login')
+    context = {'form':form}
+    return render(request, 'register.html', context)
+    ```
+    
+    Setelah itu, saya membuat file html bernama ```register.html``` untuk membuat laman register dimana terdapat formulir untuk membuat akun didalam folder template di main. Setelah fungsi request selesai dibuat, saya import fungsi ```register``` dan menambahkan path urlnya kedalam urls.py supaya dapat diakses.<br>
+    ```
+    path('register/', register, name='register'),
+    ```
+
+    Kedua, saya mengimplementasikan login dengan meng-import ```authenticate``` dan ```login``` untuk memudahkan melakukan autentikasi akun User saat Login, serta membuat fungsi login di ```views.py```.<br>
+    ```
+    def login_user(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('main:show_main')
+        else:
+            messages.info(request, 'Sorry, incorrect username or password. Please try again.')
+    context = {}
+    return render(request, 'login.html', context)
+    ```
+
+    Setelah itu, saya membuat lagi file html dengan nama ```login.html``` untuk menampilkan laman login didalam folder ```template``` di main. Fungsi login yang selesai dibuat akan diimport di ```urls.py``` dan ditambahkan path urlnya supaya dapat diakses.<br>
+    ```
+    path('login/', login_user, name='login'),
+    ```
+
+    Ketiga, saya membuat juga laman logout supaya tidak hanya satu akun yang dapat login. Saya melakukannya dengan melakukan import ```logout``` dan menambahkan fungsi ```logout_user``` di ```views.py``` di main. <br>
+    ```
+    def logout_user(request):
+        logout(request)
+        return redirect('main:login')
+    ```
+    
+    Berbeda dengan kedua fungsi sebelumnya, yang hanya bisa logout adalah yang sudah login sehingga button untuk logout berada di ```main.html``` supaya hanya bisa diakses yang sedang login. Namun, seperti sebelumnya, fungsi ```logout_user``` akan diimport ke ```urls.py``` dan di tambahkan url pathnya supaya dapat diakses fungsinya.<br>
+    ```
+    path('logout/', logout_user, name='logout'),
+    ```
+
+    Walaupun ketiga dungsi sudah dibuat dan dapat diakses, aksesnya User masih sama, yaitu bisa mengakses laman utama tanpa login sehingga saya import ```login_required``` dan menambahkan ```@login_required(login_url='/login')``` di atas fungsi ```show_main``` supaya akses lama utama hanya dapat dibuka untuk User yang sudah di autentikasi.<br>
+
+    Lalu, saya import ```datetime``` dan membuat cookie bernama ```last_login``` didalam fungsi ```login_user``` untuk mencatat kapan User terakhir login. Berikut kode untuk menambahkan cookie ```response.set_cookie('last_login', str(datetime.datetime.now()))```. Supaya last_login muncul di laman utama, maka saya menambahkannya di ```context``` dalam fungsi ```show_main``` menggunakan ```'last_login': request.COOKIES['last_login'],```. Supaya cookie User tidak dapat diakses User lain, saya menambahkan kode ``` response.delete_cookie('last_login')``` di fungsi ```logout``` agar cookie terhapus saat User logout. Lalu, last_login saya masukkan kedalam html supaya dapat dilihat oleh User.<br>
+
+- [x] Membuat dua akun pengguna dengan masing-masing tiga dummy data menggunakan model yang telah dibuat pada aplikasi sebelumnya untuk setiap akun di lokal. <br>
+    ![akun #1](https://github.com/AzkaNydiaEsti/food_inventory/assets/124995308/9c88a3ef-16d1-4a23-9a4f-b3c2840b7fef)<br>
+    ![akun #2](https://github.com/AzkaNydiaEsti/food_inventory/assets/124995308/6741a6bf-7253-4f9d-ac20-7f664002a176)<br>
+
+- [x] Menghubungkan model ```Item``` dengan ```User```. <br>
+    Pada langkah sebelumnya, saya sudah mengimplementasikan cookie, registrasi, login, dan logout. Namun, Item yang dimasukkan kedalam belum dikaitkan dengan User tertentu sehingga Item akan terlihat oleh semua User yang telah login. Supaya hanya User yang menambahkan Item yang bisa melihat item tersebut, saya membuat sebuah relationship antara User dan Item dengan import ```User``` dan menambah  variabel user di ```models.py``` menggunakan kode berikut:<br>
+    ```
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    ```
+    
+    Setelah itu, saya menambah kode di fungsi create_product supaya Item yang ditambahkan ditandai bahwa itu milik User yang sedang login. <br>
+    ```
+    def create_product(request):
+        form = ProductForm(request.POST or None)
+
+        if form.is_valid() and request.method == "POST":
+            product = form.save(commit=False)
+            product.user = request.user
+            product.save()
+            return HttpResponseRedirect(reverse('main:show_main'))
+    ```
+
+    Saya juga mengubah isi dari fungsi ```show_main``` di ```views.py``` dengan menggantikan isi variabel product dengan ``` products = Product.objects.filter(user=request.user)``` dan mengubah isi nama di context dengan ```'name': request.user.username,```. Hal ini dilakukan supaya item dan nama yang muncul didalam adalah punya User yang sedang login. Lalu, saya menyimpan perubahan menggunakan makemigrations dan migrate di cmd.<br>
+
+- [x] Menampilkan detail informasi pengguna yang sedang logged in seperti username dan menerapkan ```cookies``` seperti ```last login``` pada halaman utama aplikasi. <br>
+    ![akun #1](https://github.com/AzkaNydiaEsti/food_inventory/assets/124995308/9c88a3ef-16d1-4a23-9a4f-b3c2840b7fef)<br>
+
+- [x] Menjawab beberapa pertanyaan berikut pada ```README.md``` pada root folder (silakan modifikasi ```README.md``` yang telah kamu buat sebelumnya; tambahkan subjudul untuk setiap tugas). <br>
+
+    - Apa itu Django ```UserCreationForm```, dan jelaskan apa kelebihan dan kekurangannya? <br>
+        UserCreationForm merupakan build-in module yang diturunkan dari ModelForm dan berguna untuk membuat User baru yang dapat mengakses web application. Pembuatan user baru memerluka 3 input, yiatu username, password, dan password confirmation. <br>
+        - Kelebihannya: UserCreationForm django mudah untuk digunakan hanya dengan menggunakan beberapa baris kode, UserCreationForm juga mudah untuk mengintegrasi dengan authentication system sehingga User yang dibuat mudah untuk disimpan dan dikelola, UserCreationForm dapat di customized sesuai kebutuhan developer, dan kompatibel dengan berbagai aplikasi/extension. <bt>
+        - Kekurangan: Walaupun mudah dipakai dan di customized, terdapat keterbatasan daam melakukan autentifikasi dan vaidasi akun yang kompleks karena fitur yang ditawarkan masih dasar. Tampian HTML dari registrasi user juga polos sehingga perlu diubah sendiri oleh developer. <br>
+        <br>
+    - Apa perbedaan antara autentikasi dan otorisasi dalam konteks Django, dan mengapa keduanya penting? <br>
+        Autentikasi dalam konteks Django adalah proses memverifikasi identitas dari User yang masuk aplikasi. Hal ini untuk memastika User yang dapat mengakses fitur aplikasi hanyalah User sah dan untuk menjaga keamanan aplikasi. Sedangkan, otorisasi adalah proses untuk menentukan fitur apa yang dapat User gunakan setelah terverifikasi dan dapat masuk aplikasi. Otorisasi berfungsi supaya User hanya dapat melakukan atau mengakses hal yang diizinikan saja dan tidak dapat mengakses data sensitif aplikasi. Kedua hal tersebut krusial demi menjaga keamanan aplikasi dan melindungi data privasi yang tersimpan didalam aplikasi. <br>
+        <br>
+    - Apa itu cookies dalam konteks aplikasi web, dan bagaimana Django menggunakan cookies untuk mengelola data sesi pengguna? <br>
+        Cookies adalah data yang disimpan dalam web server selama periode tertentu setelah User melakukan login dalam aplikasi. Penggunaan cookies umumnya untuk otentikasi,personalisasi, dan managemen sesi. Saat User melakukan login, sebuah cookie session akan dibuat untuk User tersebut, dan Django akan menggunakan cookie ini untuk menyimpan informasi yang diinput oleh User dalam bentuk data sesi. Informasi yang disimpan dalam sesi dapat bervariasi, termasuk nama User atau preferensi User. Data sesi ini dapat diakses oleh User dan dapat dihapus baik secara manual oleh User atau secara otomatis dalam periode tertentu. Penggunaan cookies untuk mengelola sesi User memungkinkan aplikasi Django untuk menjaga status User, mengidentifikasi User yang masuk, dan menyimpan informasi penting lainnya selama User sedang login<br>
+        <br> 
+    -  Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai? <br> 
+        Penggunaan cookies aman jika dilindungi dengan baik, tetapi terdapat beberapa risiko saat menggunakan cookies, seperti berikut: 
+            1. Kebocoran data: Karena cookies menyimpan informasi dari User dan kadang termasuk data sensitif seperti otentifikasi User sehingga terdapat potensi risiko privasi untuk data tersebut diambil saat cookies diakses oleh Penyerang atau hacker. 
+            2. Cross-Site Scripting (XSS): Saat penyerang melakukan serangan XSS, mereka dapat menyisipkan script jahat kedalam aplikasi dan mengakses cookies User sehingga dapat masuk kedalam aplikasi sebagai User.
+            3. Cross-Site Request Forgery (CSRF): Penyerang dapat memaksa User yang sudah terautentikasi untuk melakukan request tanpa persetujuan User. 
+            4. Session Hijacking: Cookies User yang berhasil dicuri dapat digunakan oleh penyerang untuk masuk aplikasi dan mengambil alih User session.
+            <br>
+    - Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial). <br>
+        Telah dijelaskan pada checklist diatas<br>
+
+- [x] Melakukan ```add```-```commit```-```push``` ke GitHub. <br>
+
+Referensi
+- https://www.javatpoint.com/django-usercreationform

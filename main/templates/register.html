@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block meta %}
+    <title>Register</title>
+
+    <style>
+        .box{
+            height: 400px;
+            width: 700px;
+            background-color: aliceblue;
+            position: absolute;
+            transform: translate(-50%,-50%);
+            top: 50%;
+            left: 50%;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.1);
+            box-shadow: 0 0 40px rgba(8,7,16,0.6);
+            padding: 30px 30px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .btn {
+            display: flexbox;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            margin-top: 5%;
+            padding: 10px;
+            color: #080710;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: medium;
+            margin-left: 4%;
+            margin-right: 4%;
+        }
+    </style>
+{% endblock meta %}
+
+{% block content %}  
+<body class="box">
+<div class = "login">
+    
+    <h1 style="text-align: center;">Register</h1>  
+
+        <form method="POST">  
+            {% csrf_token %}  
+            <table>  
+                {{ form.as_table }}  
+                <tr>  
+                    <td></td>
+                    <td class="btn"><input type="submit" name="submit" value="submit"/></td>  
+                </tr>  
+            </table>  
+        </form>
+
+    {% if messages %}  
+        <ul>   
+            {% for message in messages %}  
+                <li>{{ message }}</li>  
+                {% endfor %}  
+        </ul>   
+    {% endif %}
+
+</div>  
+</body>
+
+{% endblock content %}
