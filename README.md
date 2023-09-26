@@ -495,10 +495,10 @@ Checklist untuk tugas ini adalah sebagai berikut:
         <br> 
     -  Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai? <br> 
         Penggunaan cookies aman jika dilindungi dengan baik, tetapi terdapat beberapa risiko saat menggunakan cookies, seperti berikut: 
-            1. Kebocoran data: Karena cookies menyimpan informasi dari User dan kadang termasuk data sensitif seperti otentifikasi User sehingga terdapat potensi risiko privasi untuk data tersebut diambil saat cookies diakses oleh Penyerang atau hacker. 
+            1. Kebocoran data: Karena cookies menyimpan informasi dari User dan kadang termasuk data sensitif seperti otentifikasi User sehingga terdapat potensi risiko privasi untuk data tersebut diambil saat cookies diakses oleh Penyerang atau hacker. <br>
             2. Cross-Site Scripting (XSS): Saat penyerang melakukan serangan XSS, mereka dapat menyisipkan script jahat kedalam aplikasi dan mengakses cookies User sehingga dapat masuk kedalam aplikasi sebagai User.
-            3. Cross-Site Request Forgery (CSRF): Penyerang dapat memaksa User yang sudah terautentikasi untuk melakukan request tanpa persetujuan User. 
-            4. Session Hijacking: Cookies User yang berhasil dicuri dapat digunakan oleh penyerang untuk masuk aplikasi dan mengambil alih User session.
+            3. Cross-Site Request Forgery (CSRF): Penyerang dapat memaksa User yang sudah terautentikasi untuk melakukan request tanpa persetujuan User. <br>
+            4. Session Hijacking: Cookies User yang berhasil dicuri dapat digunakan oleh penyerang untuk masuk aplikasi dan mengambil alih User session. <br>
             <br>
     - Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial). <br>
         Telah dijelaskan pada checklist diatas<br>
