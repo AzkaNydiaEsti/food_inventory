@@ -464,10 +464,11 @@ Checklist untuk tugas ini adalah sebagai berikut:
     Supaya last_login muncul di laman utama, maka saya menambahkannya di ```context``` dalam fungsi ```show_main``` menggunakan kode ```'last_login': request.COOKIES['last_login'],``` dan agar cookie User tidak dapat diakses User lain, saya menambahkan kode ``` response.delete_cookie('last_login')``` di fungsi ```logout``` agar cookie terhapus saat User logout. Lalu, ```last_login``` saya panggil kedalam html supaya dapat dilihat oleh User.<br>
 
 - [x] Membuat dua akun pengguna dengan masing-masing tiga dummy data menggunakan model yang telah dibuat pada aplikasi sebelumnya untuk setiap akun di lokal. <br>
-    Dibawah ini foto jika item dibuat tetapi tidak di filter sehingga semua item pada akun berbeda akan muncul siapapun User yang login.
+    Dibawah ini foto jika item dibuat oleh berbeda User tetapi tidak di filter sehingga semua item pada User berbeda akan muncul siapapun User yang login.
     ![akunori](https://github.com/AzkaNydiaEsti/food_inventory/assets/124995308/94bde34e-937e-4fd1-8237-7d43bef6b9c0)
     <br>
-    Pada dua foto berikut adalah akun User yang saya buat setelah item sudah difilter sesuai User dengan masing-masing memiliki 3 jenis item berbeda sesuai add item yang masing-masing User lakukan.<br>
+    <br>
+    Pada dua foto dibawah ini adalah 2 akun User yang saya buat setelah item sudah difilter sesuai User dengan masing-masing memiliki 3 jenis item berbeda sesuai add item yang masing-masing User lakukan.<br>
     ![akun #1](https://github.com/AzkaNydiaEsti/food_inventory/assets/124995308/12a6d80e-5ac0-4c7d-8efb-c5a763df7647)<br>
     ![akun #2](https://github.com/AzkaNydiaEsti/food_inventory/assets/124995308/c4c6938f-799a-47a4-abbd-e97f031d2357)<br>
 
