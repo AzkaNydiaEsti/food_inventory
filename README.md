@@ -9,7 +9,17 @@ https://gi-foodinventory.adaptable.app/main/
 
 ---
 
+# Direktori
+
+- Tugas 2 [#tugas-2-checklist]
+- Tugas 3 [#tugas-3-checklist]
+- Tugas 4 [#tugas-4-checklist]
+
+---
+
 # Tugas 2 Checklist
+
+--- 
 Checklist untuk tugas ini adalah sebagai berikut.<br>
  - [x] Membuat sebuah proyek Django baru.<br>
  - [x] Membuat aplikasi dengan nama main pada proyek tersebut.<br>
@@ -149,6 +159,8 @@ Referensi:<br>
 ---
 
 # Tugas 3 Checklist
+
+--- 
 
 Checklist untuk tugas ini adalah sebagai berikut.<br>
 
@@ -453,8 +465,8 @@ Checklist untuk tugas ini adalah sebagai berikut:
 
 - [x] Membuat dua akun pengguna dengan masing-masing tiga dummy data menggunakan model yang telah dibuat pada aplikasi sebelumnya untuk setiap akun di lokal. <br>
     Pada dua foto berikut adalah akun User yang saya buat dengan masing-masing memiliki 3 jenis item berbeda.
-    ![akun #1](https://github.com/AzkaNydiaEsti/food_inventory/assets/124995308/9c88a3ef-16d1-4a23-9a4f-b3c2840b7fef)<br>
-    ![akun #2](https://github.com/AzkaNydiaEsti/food_inventory/assets/124995308/6741a6bf-7253-4f9d-ac20-7f664002a176)<br>
+    ![akun #1](https://github.com/AzkaNydiaEsti/food_inventory/assets/124995308/12a6d80e-5ac0-4c7d-8efb-c5a763df7647)<br>
+    ![akun #2](https://github.com/AzkaNydiaEsti/food_inventory/assets/124995308/c4c6938f-799a-47a4-abbd-e97f031d2357)<br>
 
 - [x] Menghubungkan model ```Item``` dengan ```User```. <br>
     Pada langkah sebelumnya, saya sudah mengimplementasikan cookie, registrasi, login, dan logout. Namun, Item yang dimasukkan kedalam belum dikaitkan dengan User tertentu sehingga Item akan terlihat oleh semua User yang telah login. Supaya hanya User yang menambahkan Item yang bisa melihat item tersebut, saya membuat sebuah relationship antara User dan Item dengan import ```User``` dan menambah  variabel user di ```models.py``` menggunakan kode berikut:<br>
@@ -462,9 +474,9 @@ Checklist untuk tugas ini adalah sebagai berikut:
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     ```
     
-    Setelah itu, saya menambah kode di fungsi ```create_product``` supaya Item yang ditambahkan ditandai bahwa itu milik User yang sedang login. <br>
+    Setelah itu, saya menambah kode di fungsi ```add_item``` (Pada tugas sebelumnya, nama fungsinya ```create_product```) supaya Item yang ditambahkan ditandai bahwa itu milik User yang sedang login. <br>
     ```
-    def create_product(request):
+    def add_item(request):
         form = ProductForm(request.POST or None)
 
         if form.is_valid() and request.method == "POST":
@@ -477,28 +489,30 @@ Checklist untuk tugas ini adalah sebagai berikut:
     Saya juga mengubah isi dari fungsi ```show_main``` di ```views.py``` dengan menggantikan isi variabel product dengan ``` products = Product.objects.filter(user=request.user)``` dan mengubah isi nama di context dengan ```'name': request.user.username,```. Hal ini dilakukan supaya item dan nama yang muncul didalam adalah punya User yang sedang login. Lalu, saya menyimpan perubahan menggunakan makemigrations dan migrate di cmd.<br>
 
 - [x] Menampilkan detail informasi pengguna yang sedang logged in seperti username dan menerapkan ```cookies``` seperti ```last login``` pada halaman utama aplikasi. <br>
-    Pada foto dibawah, Infomasi usernama saya taruh diatas dan last login saya taruh dibawah button add item.
-    ![akun #1](https://github.com/AzkaNydiaEsti/food_inventory/assets/124995308/9c88a3ef-16d1-4a23-9a4f-b3c2840b7fef)<br>
+    Pada foto dibawah, Infomasi usernama saya taruh paling atas dan last login saya taruh dibawah button add item.
+    ![akun #1](https://github.com/AzkaNydiaEsti/food_inventory/assets/124995308/12a6d80e-5ac0-4c7d-8efb-c5a763df7647)<br>
 
 - [x] Menjawab beberapa pertanyaan berikut pada ```README.md``` pada root folder (silakan modifikasi ```README.md``` yang telah kamu buat sebelumnya; tambahkan subjudul untuk setiap tugas). <br>
 
     - Apa itu Django ```UserCreationForm```, dan jelaskan apa kelebihan dan kekurangannya? <br>
-        UserCreationForm merupakan build-in module yang diturunkan dari ModelForm dan berguna untuk membuat User baru yang dapat mengakses web application. Pembuatan user baru memerluka 3 input, yiatu username, password, dan password confirmation. <br>
-        - Kelebihannya: UserCreationForm django mudah untuk digunakan hanya dengan menggunakan beberapa baris kode, UserCreationForm juga mudah untuk mengintegrasi dengan authentication system sehingga User yang dibuat mudah untuk disimpan dan dikelola, UserCreationForm dapat di customized sesuai kebutuhan developer, dan kompatibel dengan berbagai aplikasi/extension. <bt>
-        - Kekurangan: Walaupun mudah dipakai dan di customized, terdapat keterbatasan daam melakukan autentifikasi dan vaidasi akun yang kompleks karena fitur yang ditawarkan masih dasar. Tampian HTML dari registrasi user juga polos sehingga perlu diubah sendiri oleh developer. <br>
+        UserCreationForm merupakan build-in module yang diturunkan dari ModelForm dan berguna untuk membuat User baru yang dapat mengakses web application. Pembuatan user baru memerluka 3 input, yaitu username, password, dan password confirmation. <br>
+        - Kelebihannya: UserCreationForm django mudah untuk digunakan hanya dengan menggunakan beberapa baris kode, UserCreationForm juga mudah untuk mengintegrasi dengan authentication system sehingga akun User yang telah dibuat mudah untuk disimpan dan dikelola, UserCreationForm dapat di customized sesuai kebutuhan developer, dan kompatibel dengan berbagai aplikasi/extension. <bt>
+        - Kekurangan: Walaupun mudah dipakai dan di customized, terdapat keterbatasan dalam melakukan autentifikasi dan vaidasi akun yang kompleks karena fitur yang ditawarkan masih dasar. Tampilan HTML dari registrasi user juga polos sehingga perlu diubah sendiri oleh developer. <br>
         <br>
     - Apa perbedaan antara autentikasi dan otorisasi dalam konteks Django, dan mengapa keduanya penting? <br>
-        Autentikasi dalam konteks Django adalah proses memverifikasi identitas dari User yang masuk aplikasi. Hal ini untuk memastika User yang dapat mengakses fitur aplikasi hanyalah User sah dan untuk menjaga keamanan aplikasi. Sedangkan, otorisasi adalah proses untuk menentukan fitur apa yang dapat User gunakan setelah terverifikasi dan dapat masuk aplikasi. Otorisasi berfungsi supaya User hanya dapat melakukan atau mengakses hal yang diizinikan saja dan tidak dapat mengakses data sensitif aplikasi. Kedua hal tersebut krusial demi menjaga keamanan aplikasi dan melindungi data privasi yang tersimpan didalam aplikasi. <br>
+        Autentikasi dalam konteks Django adalah proses memverifikasi identitas dari User yang masuk aplikasi. Hal ini untuk memastika User yang dapat mengakses fitur aplikasi hanyalah User sah dan untuk menjaga keamanan aplikasi. Umumnya, autentikasi memerlukan username dan password User. <br>
+        <br>
+        Sedangkan, otorisasi adalah proses untuk menentukan fitur apa yang dapat User gunakan setelah terverifikasi dan dapat masuk aplikasi. Otorisasi berfungsi supaya User hanya dapat melakukan atau mengakses hal yang diizinikan saja dan tidak dapat mengakses data sensitif aplikasi yang bukan miliknya. Kedua hal tersebut krusial demi menjaga keamanan aplikasi dan melindungi data privasi yang tersimpan didalam aplikasi supaya tidak dapat diakses oleh orang yang tidak punya hak. <br>
         <br>
     - Apa itu cookies dalam konteks aplikasi web, dan bagaimana Django menggunakan cookies untuk mengelola data sesi pengguna? <br>
-        Cookies adalah data yang disimpan dalam web server selama periode tertentu setelah User melakukan login dalam aplikasi. Penggunaan cookies umumnya untuk otentikasi,personalisasi, dan managemen sesi. Saat User melakukan login, sebuah cookie session akan dibuat untuk User tersebut, dan Django akan menggunakan cookie ini untuk menyimpan informasi yang diinput oleh User dalam bentuk data sesi. Informasi yang disimpan dalam sesi dapat bervariasi, termasuk nama User atau preferensi User. Data sesi ini dapat diakses oleh User dan dapat dihapus baik secara manual oleh User atau secara otomatis dalam periode tertentu. Penggunaan cookies untuk mengelola sesi User memungkinkan aplikasi Django untuk menjaga status User, mengidentifikasi User yang masuk, dan menyimpan informasi penting lainnya selama User sedang login<br>
+        Cookies adalah data yang disimpan dalam perangkat user selama periode tertentu setelah User melakukan login dalam aplikasi. Penggunaan cookies umumnya untuk otentikasi, personalisasi, dan managemen sesi. Saat User melakukan login, sebuah cookie session akan dibuat untuk User tersebut, dan Django akan menggunakan cookie ini untuk menyimpan informasi yang diinput oleh User dalam bentuk data sesi selama session tersebut. Informasi yang disimpan dalam sesi dapat bervariasi, termasuk nama User atau preferensi User. Data sesi ini dapat diakses oleh User dan dapat dihapus baik secara manual oleh User atau secara otomatis dalam periode tertentu. Penggunaan cookies untuk mengelola sesi User memungkinkan aplikasi Django untuk menjaga status User, mengidentifikasi User yang masuk, dan menyimpan informasi penting lainnya selama User sedang login<br>
         <br> 
     -  Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai? <br> 
         Penggunaan cookies aman jika dilindungi dengan baik, tetapi terdapat beberapa risiko saat menggunakan cookies, seperti berikut: <br>
             1. Kebocoran data: Karena cookies menyimpan informasi dari User dan kadang termasuk data sensitif seperti otentifikasi User sehingga terdapat potensi risiko privasi untuk data tersebut diambil saat cookies diakses oleh Penyerang atau hacker. <br>
             2. Cross-Site Scripting (XSS): Saat penyerang melakukan serangan XSS, mereka dapat menyisipkan script jahat kedalam aplikasi dan mengakses cookies User sehingga dapat masuk kedalam aplikasi sebagai User.<br>
             3. Cross-Site Request Forgery (CSRF): Penyerang dapat memaksa User yang sudah terautentikasi untuk melakukan request tanpa persetujuan User. <br>
-            4. Session Hijacking: Cookies User yang berhasil dicuri dapat digunakan oleh penyerang untuk masuk aplikasi dan mengambil alih User session. <br>
+            4. Session Hijacking: Cookies User yang berhasil dicuri dapat digunakan oleh penyerang untuk masuk aplikasi dan mengambil alih session user. <br>
             <br>
     - Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial). <br>
         Telah dijelaskan pada checklist diatas<br>
@@ -508,3 +522,77 @@ Checklist untuk tugas ini adalah sebagai berikut:
 
 Referensi
 - https://www.javatpoint.com/django-usercreationform
+
+# Bonus Tugas 4
+
+- [x] Tambahkan tombol dan fungsi untuk menambahkan amount suatu objek sebanyak satu dan tombol untuk mengurangi jumlah stok suatu objek sebanyak satu.<br>
+    Pertama, saya membuat fungsi ```dec_item``` dan ```inc_item``` untuk membuat button yang akan mengurangi dan menambah jumlah dari tiap item. <br>
+    ```
+    def dec_amount(request, id):
+    item = Barang.objects.get(pk=id)
+    if request.method == 'POST':
+        if item.amount > 0:
+            if item.amount > 0:
+                item.amount -= 1
+                item.save() 
+            elif item.amount <= 0:
+                item.delete()
+    return redirect('main:show_main')
+
+    def inc_amount(request, id):
+        item = Barang.objects.get(pk=id)
+        if request.method == 'POST':
+            if item.amount > 0:
+                item.amount += 1
+                item.save() 
+        return redirect('main:show_main')
+    ```
+
+    Setelah itu, saya import fungsi dan tambah urls pathnya didalam ```urls.py``` supaya dapat dipanggil di ```main.html```.<br>
+    ```
+    path('dec_amount/<int:id>/', views.dec_amount, name='dec_amount'),
+    path('inc_amount/<int:id>/', views.inc_amount, name='inc_amount'),
+    ```
+
+    Lalu, saya memodifikasi main.html supaya tombol muncul dan bisa digunakan dengan kode berikut:<br>
+    ```
+    <td style="align-items: center; display: flex">
+        <form method="post" action="{% url 'main:dec_amount' product.id %}">
+            {% csrf_token %}
+            <button type="submit">-</button>
+        </form>
+        <span style="margin: 0 10px;">{{ product.amount }}</span>
+        <form method="post" action="{% url 'main:inc_amount' product.id %}">
+            {% csrf_token %}
+            <button type="submit">+</button>
+        </form>
+    </td>
+    ```
+
+- [x] Tambahkan tombol dan fungsi untuk menghapus suatu objek dari inventori.<br>
+     Pertama, saya membuat fungsi ```deelete_item``` untuk membuat button yang akan mengurangi dan menambah jumlah dari tiap item. <br>
+    ```
+    def delete_item(request, id):
+    if request.method == 'POST':
+        item = Barang.objects.get(id=id)
+        item.delete()
+    
+    return redirect('main:show_main')
+    ```
+
+    Setelah itu, saya import fungsinya dan tambah urls pathnya didalam ```urls.py``` supaya dapat dipanggil di ```main.html```.<br>
+    ```
+    path('delete_item/<int:id>/', views.delete_item, name='delete_item'),
+    ```
+
+    Lalu, saya memodifikasi main.html supaya tulisan delete muncul dan bisa digunakan dengan kode berikut:<br>
+    ```
+    <td>
+        <form action="{% url 'main:delete_item' product.id %}" method="POST">
+            {% csrf_token %}
+            <button style="background-color: antiquewhite; border: none; color: #91BEDC;" type="submit">
+                <span>Delete</span>
+            </button>
+        </form>
+    </td>
+    ```

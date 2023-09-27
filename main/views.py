@@ -13,6 +13,7 @@ from django.contrib.auth.decorators import login_required
 import datetime
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.shortcuts import get_object_or_404
 
 @login_required(login_url='/login')
 
@@ -31,7 +32,7 @@ def show_main(request):
 
     return render(request, "main.html", context)
 
-def create_product(request):
+def add_item(request):
     form = ItemForm(request.POST or None)
 
     if form.is_valid() and request.method == "POST":
@@ -41,7 +42,7 @@ def create_product(request):
         return HttpResponseRedirect(reverse('main:show_main'))
 
     context = {'form': form}
-    return render(request, "create_product.html", context)
+    return render(request, "add_item.html", context)
 
 def show_xml(request):
     data = Barang.objects.all()
@@ -92,3 +93,28 @@ def logout_user(request):
     response.delete_cookie('last_login')
     return response
 
+def dec_amount(request, id):
+    item = Barang.objects.get(pk=id)
+    if request.method == 'POST':
+        if item.amount > 0:
+            if item.amount > 0:
+                item.amount -= 1
+                item.save() 
+            elif item.amount <= 0:
+                item.delete()
+    return redirect('main:show_main')
+
+def inc_amount(request, id):
+    item = Barang.objects.get(pk=id)
+    if request.method == 'POST':
+        if item.amount > 0:
+            item.amount += 1
+            item.save() 
+    return redirect('main:show_main')
+
+def delete_item(request, id):
+    if request.method == 'POST':
+        item = Barang.objects.get(id=id)
+        item.delete()
+    
+    return redirect('main:show_main')
