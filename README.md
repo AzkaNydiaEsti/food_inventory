@@ -11,9 +11,9 @@ https://gi-foodinventory.adaptable.app/main/
 
 # Direktori
 
-- Tugas 2 [#tugas-2-checklist]
-- Tugas 3 [#tugas-3-checklist]
-- Tugas 4 [#tugas-4-checklist]
+- [Tugas 2](#tugas-2-checklist)
+- [Tugas 3](#tugas-3-checklist)
+- [Tugas 4](#tugas-4-checklist)
 
 ---
 
