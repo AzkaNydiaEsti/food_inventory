@@ -821,9 +821,13 @@ Checklist untuk tugas ini adalah sebagai berikut:<br>
         ```
         <br>
         Dibawah ini merupakan inline style yang saya pakai untuk membuat button dan jumlah item.<br>
-        ```<button style="background-color: antiquewhite; border: black; color: #91BEDC;" type="submit">```
-        <br>
-        ```<p style="text-align: center;">{{ total_items }}</p>```
+        ```
+        <button style="background-color: antiquewhite; border: black; color: #91BEDC;" type="submit">
+
+        ...
+
+        <p style="text-align: center;">{{ total_items }}</p>
+        ```
         <br>
 
 - [x] Menjawab beberapa pertanyaan berikut pada README.md pada root folder (silakan modifikasi README.md yang telah kamu buat sebelumnya; tambahkan subjudul untuk setiap tugas).<br>
