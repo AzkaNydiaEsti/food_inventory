@@ -818,13 +818,8 @@ Checklist untuk tugas ini adalah sebagai berikut:<br>
                 background-color: antiquewhite;
                 color: #080710;
             }
-        ```
-        <br>
-        Dibawah ini merupakan inline style yang saya pakai untuk membuat button dan jumlah item.<br>
-        ```
-        <button style="background-color: antiquewhite; border: black; color: #91BEDC;" type="submit">
 
-        ...
+        <button style="background-color: antiquewhite; border: black; color: #91BEDC;" type="submit">
 
         <p style="text-align: center;">{{ total_items }}</p>
         ```
