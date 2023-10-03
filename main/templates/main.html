@@ -90,6 +90,7 @@
     <th>Description</th>
     <th>Amount</th>
     <th>Delete</th>
+    <th>Edit</th>
   </tr>
   {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
 
@@ -117,6 +118,13 @@
                   <span>Delete</span>
               </button>
           </form>
+      </td>
+      <td>
+        <a href="{% url 'main:edit_item' product.pk %}">
+          <button style="background-color: antiquewhite; border: black; color: #91BEDC;" type="submit" >
+              Edit
+          </button>
+      </a>
       </td>
     </tr>
   {% endfor %}

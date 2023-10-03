@@ -50,12 +50,15 @@
             font-size: 16px;
             font-weight: 500;
         }
-        .rectangle {
-            height: 520px;
-            width: 350px;
-            background-color: aliceblue;
-            border-radius: 10px;
+        h1 {
+            background-color: #91BEDC;
+            padding: 10px;
+            text-align: center;
+            font-size: 50px;
+            color: white;
+            font-family: Georgia, 'Times New Roman', Times, serif;
         }
+
     </style>
 {% endblock meta %}
 
@@ -63,14 +66,7 @@
 <body class = "box">
 <div class = "login">
 
-    <h1 style="
-    background-color: #91BEDC;
-    padding: 10px;
-    text-align: center;
-    font-size: 50px;
-    color: white;
-    font-family: Georgia, 'Times New Roman', Times, serif;"
-    >Login</h1>
+    <h1>Login</h1>
 
     <form method="POST" action="">
         {% csrf_token %}

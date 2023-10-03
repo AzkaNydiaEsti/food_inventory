@@ -44,6 +44,18 @@ def add_item(request):
     context = {'form': form}
     return render(request, "add_item.html", context)
 
+def edit_item(request, id):
+    product = Barang.objects.get(pk = id)
+
+    form = ItemForm(request.POST or None, instance=product)
+
+    if form.is_valid() and request.method == "POST":
+        form.save()
+        return HttpResponseRedirect(reverse('main:show_main'))
+
+    context = {'form': form}
+    return render(request, "edit_item.html", context)
+
 def show_xml(request):
     data = Barang.objects.all()
     return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
