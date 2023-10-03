@@ -822,16 +822,17 @@ Checklist untuk tugas ini adalah sebagai berikut:<br>
         <br>
         Dibawah ini merupakan inline style yang saya pakai untuk membuat button dan jumlah item.<br>
         ```
-        <button style="background-color: antiquewhite; border: black; color: #91BEDC;" type="submit" >
+        < button style="background-color: antiquewhite; border: black; color: #91BEDC;" type="submit" >
         ```
+        <br>
         ```
-        <p style="text-align: center;">{{ total_items }}</p>
+        < p style="text-align: center;">{{ total_items }}</p >
         ```
         <br>
 
 - [x] Menjawab beberapa pertanyaan berikut pada README.md pada root folder (silakan modifikasi README.md yang telah kamu buat sebelumnya; tambahkan subjudul untuk setiap tugas).<br>
     - Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya.<br>
-        Element Selector memungkinkan kita mengubah properti pada semua elemen yang memiliki tag HTML yang sama dan umumnya dipakai jika kita ingin mengubah properti atau hal yang sama pada semua elemen yang memiliki tag yang sama supaya tidak mengulang perintah yang sama pada tag yang sama dan memboros koding. Contohnya 'p' akan memanggil semua elemen paragraf pada file html sehingga. Cara menggunakan elemen selector dengan menggunakan format [id_name] tanpa simbol apapun dan di diikuti oleh {} yang dapat diisi dengan properti yang ingin diubah. <br>
+        Element Selector memungkinkan kita mengubah properti pada semua elemen yang memiliki tag HTML yang sama dan umumnya dipakai jika kita ingin mengubah properti atau hal yang sama pada semua elemen yang memiliki tag yang sama supaya tidak mengulang perintah yang sama pada tag yang sama dan memboros koding. Contohnya 'p' akan memanggil semua elemen paragraf pada file html sehingga kita tidak perlu menulis koding properti yang sama pada tiap tag p yang ditemukan. Cara menggunakan elemen selector dengan menggunakan format [id_name] tanpa simbol apapun dan di diikuti oleh {} yang dapat diisi dengan properti yang ingin diubah. <br>
         <br>
     - Jelaskan HTML5 Tag yang kamu ketahui.<br>
         - < header > : header dipakai untuk mendefinisikan kepala dari sebuah halaman atau bagian tertentu dalam halaman, biasanya berisi elemen seperti judul dan navigasi.<br>
@@ -853,6 +854,7 @@ Checklist untuk tugas ini adalah sebagai berikut:<br>
             Tailwind CSS memberikan fleksibilitas dan adaptabilitas tinggi terhadap tampilan karena dapat menyesuaikan kelas utilitas yang ada atau menambah kelas baru, tetapi Bootstrap menghasilkan tampilan yang lebih konsisten karena menggunakan komponen yang telah didefinisikan dan harus mengganti banyak aturan CSS jika ingin membuat tampilan yang unik atau berbeda.
         4. Kompleksitas dalam memahami<br>
             Tailwind menyediakan kelas utilitas sehingga pengguna perlu memahami kelas utilitas yang ada dan mengerti cara menggabungkan kelas tersebut, sedangkan Bootstrap menawarkan tampilan siap jadi yang memudahkan pemula untuk mengerti karena komponen yang disediakan telah terdefinisi.<br>
+            <br>
         Berdasarkan perbedaan tersebut, Tailwind sebaiknya dipakai jika terdapat tampilan unik yang ingin dicapai yang perlu dikustomisasi dan memiliki banyak waktu untuk mengerjakannya, sedangkan Bootstrap lebih cocok jika ingin mendapat tampilan siap pakai atau tidak mau ribet mengurus tampilan dan tidak ada banyak waktu untuk membuat tampilan kustom.
         <br>
     - Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).<br>
