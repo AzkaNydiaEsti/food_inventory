@@ -621,7 +621,7 @@ Checklist untuk tugas ini adalah sebagai berikut:<br>
         Pada laman login, saya membuat tampilan menggunakan style dengan metode Internal style sheet. Style tersebut saya taruh didalam block meta dan saya mengaplikasi style pada 2 kelas baru dan 3 tag, yaitu class box dan login_btn, serta tag input, label, dan h1. Pada laman ini, saya menggunakan properti height, widht, align, padding, margin, font, color, display, dan border untuk merubah penampilan login dan menambahkan box-shadow supaya login terlihat seperti kotak yang mengambang.<br>
         <br>
 
-        ![register](https://github.com/AzkaNydiaEsti/food_inventory/assets/124995308/8fbff4f8-3744-4217-891f-9df21e55547e)<br>
+        ![register](https://github.com/AzkaNydiaEsti/food_inventory/assets/124995308/0f72a6d4-db69-48c9-879a-abeb587b3bd0)<br>
         Berikut laman register<br>
         Saya menggunakan properti yang sama dari laman login untuk laman registrasi, perbedaannya hanya di jumlah tag yang diimplementasi style, bentuk tombol, dan jumlah input yang diminta. Pada laman ini, saya hanya mengaplikasikan style pada kelas box untuk tampilan tag div untuk input login di halaman, kelas btn yang diaplikasi di tag input, kelas background untuk latar belakang halaman, dan tag h1 sebagai judul laman di atas input.<br>
         <br>
