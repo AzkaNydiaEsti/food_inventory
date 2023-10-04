@@ -45,6 +45,15 @@
     text-align: center;
     border: 3px solid cadetblue
   }
+  .noBord{
+    margin-top: 30px;
+    width: 100%;
+    margin-left:auto;
+    margin-right:auto;
+    border-spacing: 5px;
+    text-align: center;
+    border: none
+  }
   tr {
     background-color: #455359;
     color: antiquewhite
@@ -65,18 +74,21 @@
     font-size: medium;
     margin-left: 4%;
     margin-right: 4%;
+    border-radius: 25px;
   }
   td {
     background-color: antiquewhite;
     color: #080710;
   }
+  /* table tr:last-child {
+      background-color: #4bc0fffe;
+    } */
 
 </style>
 <div class="usn">	&#x1F497 Currently logged in as <b>{{ nama }}</b> &#x1F497 </div>
 
 <header class="header">
-  <h1>Genshin Impact</h1>
-  <h2>&#127841 Food Inventory &#127836</h2>
+  <img src="https://i.ibb.co/ctvgk1W/genshin-logo.png" alt="genshin-logo">
 </header>
 
 
@@ -88,9 +100,9 @@
     <th>Quality</th>
     <th>Type</th>
     <th>Description</th>
-    <th>Amount</th>
-    <th>Delete</th>
-    <th>Edit</th>
+    <th  style="width: 70px;">Amount</th>
+    <p style="width: 100px;"></p>
+    <p style="width: 100px;"></p>
   </tr>
   {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
 
@@ -103,29 +115,29 @@
         <td style="align-items: center; display: flex">
           <form method="post" action="{% url 'main:dec_amount' product.id %}">
               {% csrf_token %}
-              <button type="submit">-</button>
+              <button style="border: 1px; border-radius: 25px; background-color: lightcoral;" type="submit">-</button>
           </form>
            <span style="margin: 0 10px;">{{ product.amount }}</span>
           <form method="post" action="{% url 'main:inc_amount' product.id %}">
               {% csrf_token %}
-              <button type="submit">+</button>
+              <button style="border: 1px; border-radius: 25px; background-color: mediumaquamarine;" type="submit">+</button>
           </form>
         </td>
-        <td>
+        </td>
+        <td style="border-radius: 25px; width: 80px;">
+          <a href="{% url 'main:edit_item' product.pk %}">
+            <button style="background-color: antiquewhite; border: black; color: #91BEDC;" type="submit" >
+                Edit
+            </button>
+        </a>
+        </td>
+        <td style="border-radius: 25px; width: 100px; background-color: red;">
           <form action="{% url 'main:delete_item' product.id %}" method="POST">
               {% csrf_token %}
-              <button style="background-color: antiquewhite; border: none; color: #91BEDC;" type="submit">
+              <button style="background-color: red; border: none; color: white;" type="submit">
                   <span>Delete</span>
               </button>
           </form>
-      </td>
-      <td>
-        <a href="{% url 'main:edit_item' product.pk %}">
-          <button style="background-color: antiquewhite; border: black; color: #91BEDC;" type="submit" >
-              Edit
-          </button>
-      </a>
-      </td>
     </tr>
   {% endfor %}
 </table>

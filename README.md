@@ -612,245 +612,65 @@ Checklist untuk tugas ini adalah sebagai berikut:<br>
 
 - [x] Kustomisasi desain pada templat HTML yang telah dibuat pada Tugas 4 dengan menggunakan CSS atau CSS framework (seperti Bootstrap, Tailwind, Bulma) dengan ketentuan sebagai berikut<br>
     - Kustomisasi halaman login, register, dan tambah inventori semenarik mungkin.<br>
-        Pada Tugas 5, saya mengaplikasikan CSS menggunakan Inline style dan Internal style sheet.<br>
+        Pada Tugas 5, saya mengaplikasikan CSS menggunakan Inline style dan Internal style sheet tanpa menggunakan bootstrap.<br>
         <br>
         Pada Halaman login dan register, saya menggunakan Internal style sheet untuk mengaplikasikan style pada tag dan class yang ada di file, sedangkan pada Halaman add Item, saya menggunakan Inline style. <br>
         <br>
-        ![login](https://github.com/AzkaNydiaEsti/food_inventory/assets/124995308/fae375ef-ee5b-4e16-b96b-48abc045ed6c)<br>
+        ![login](https://github.com/AzkaNydiaEsti/food_inventory/assets/124995308/3afea025-b7ae-49b5-8742-a4d216a626a1)<br>
         Berikut laman login<br>
-        Pada laman login, saya membuat tampilan menggunakan style dengan metode Internal style sheet. Style tersebut saya taruh didalam block meta dan saya mengaplikasn style pada 2 kelas baru dan 3 tag, yaitu class box dan login_btn, serta tag input, label, dan h1. Pada laman ini, saya menggunakan properti height, widht, align, padding, margin, font, color, display, dan border untuk merubah penampilan login dan menambahkan box-shadow supaya login terlihat seperti kotak yang mengambang.<br>
-        ```
-        <style>
-            .box{
-                height: 520px;
-                width: 350px;
-                background-color: aliceblue;
-                position: absolute;
-                transform: translate(-50%,-50%);
-                top: 50%;
-                left: 50%;
-                border-radius: 10px;
-                backdrop-filter: blur(10px);
-                border: 2px solid rgba(255,255,255,0.1);
-                box-shadow: 0 0 40px rgba(8,7,16,0.6);
-                padding: 30px 30px;
-                font-family: 'Courier New', Courier, monospace;
-            }
-            input{
-                display: block;
-                height: 30px;
-                width: 300px;
-                background-color: rgba(255,255,255,0.07);
-                border-radius: 3px;
-                padding: 0 10px;
-                margin-top: 8px;
-                font-size: 14px;
-                font-weight: 300;
-            }
-            .login_btn{
-                display: flexbox;
-                margin-top: 50px;
-                width : 250px;
-                height : 30px;
-                background-color: #ffffff;
-                color: #080710;
-                font-size: 18px;
-                font-weight: 600;
-                cursor: pointer;
-                margin-left: 0%;
-                margin-right: 0%;
-            }
-            label {
-                display: block;
-                margin-top: 30px;
-                font-size: 16px;
-                font-weight: 500;
-            }
-            h1 {
-                background-color: #91BEDC;
-                padding: 10px;
-                text-align: center;
-                font-size: 50px;
-                color: white;
-                font-family: Georgia, 'Times New Roman', Times, serif;
-            }
-        ```
+        Pada laman login, saya membuat tampilan menggunakan style dengan metode Internal style sheet. Style tersebut saya taruh didalam block meta dan saya mengaplikasi style pada 2 kelas baru dan 3 tag, yaitu class box dan login_btn, serta tag input, label, dan h1. Pada laman ini, saya menggunakan properti height, widht, align, padding, margin, font, color, display, dan border untuk merubah penampilan login dan menambahkan box-shadow supaya login terlihat seperti kotak yang mengambang.<br>
         <br>
 
-        ![register](https://github.com/AzkaNydiaEsti/food_inventory/assets/124995308/15ac92e2-b0fc-4416-aa22-aafc0993895e)<br>
+        ![register](AzkaNydiaEsti/food_inventory/assets/124995308/0e653056-3d70-49b8-b152-3f19f79b66b6))<br>
         Berikut laman register<br>
-        Saya menggunakan properti yang sama dari laman login untuk laman registrasi, perbedaannya hanya di jumlah tag yang diimplementasi style, bentuk tombol, dan jumlah input yang diminta. Pada laman ini, saya hanya mengaplikasikan style pada kelas box untuk tampilan tag body halaman, kelas btn yang diaplikasi di tag input, dan tag h1 sebagai judul laman di atas input.<br>
-        ```
-        <style>
-            .box{
-                height: 450px;
-                width: 700px;
-                background-color: aliceblue;
-                position: absolute;
-                transform: translate(-50%,-50%);
-                top: 50%;
-                left: 50%;
-                border-radius: 10px;
-                backdrop-filter: blur(10px);
-                border: 2px solid rgba(255,255,255,0.1);
-                box-shadow: 0 0 40px rgba(8,7,16,0.6);
-                padding: 30px 30px;
-                font-family: 'Courier New', Courier, monospace;
-            }
-            .btn {
-                display: block;
-                text-align: center;
-                justify-content: center;
-                align-items: center;
-                margin-top: 5%;
-                padding: 10px;
-                font-weight: 600;
-                cursor: pointer;
-                margin-left: 4%;
-                margin-right: 4%;
-            }
-            h1 {
-                background-color: #91BEDC;
-                padding: 5px;
-                text-align: center;
-                font-size: 50px;
-                color: white;
-                font-family: Georgia, 'Times New Roman', Times, serif;
-            }
-        ```
+        Saya menggunakan properti yang sama dari laman login untuk laman registrasi, perbedaannya hanya di jumlah tag yang diimplementasi style, bentuk tombol, dan jumlah input yang diminta. Pada laman ini, saya hanya mengaplikasikan style pada kelas box untuk tampilan tag div untuk input login di halaman, kelas btn yang diaplikasi di tag input, kelas background untuk latar belakang halaman, dan tag h1 sebagai judul laman di atas input.<br>
         <br>
 
-        ![add item](https://github.com/AzkaNydiaEsti/food_inventory/assets/124995308/ff1f64a5-8154-4fab-b581-01e836753431)<br>
+        ![add item](https://github.com/AzkaNydiaEsti/food_inventory/assets/124995308/a399b771-4a7e-42cb-be02-c88fd39de1d3)<br>
         Berikut laman add item<br>
-        Pada laman add item, saya menggunakan metode inline style dengan menambahkan style di tag h1 dan tag div. <br>
-        ```
-        <h1 style="background-color: #91BEDC;
-        padding: 20px;
-        text-align: center;
-        color: white;
-        font-family: Georgia, 'Times New Roman', Times, serif;">Add New Item</h1>
-
-        ...
-
-        <div style="padding: 2px;
-        background-color: #C7DBE9;
-        margin-top: 5%;
-        margin-bottom: 0%;
-        text-align: center;
-        font-family: 'Courier New', Courier, monospace;">
-            <h4>By</h4>
-            <h4>Azka Nydia E - 2206028970</h4>
-        </div>
-        ```
+        Pada laman add item, saya menggunakan metode inline style dengan menambahkan style di tag h1 dan tag div. Atribut style yang saya gunakan diantaranya background colour, margin, text-align, fort, dan lain-lain. 
         <br>
 
     - Kustomisasi halaman daftar inventori menjadi lebih berwarna maupun menggunakan apporach lain seperti menggunakan Card.<br>
         Pada halaman main dimana saya menaruh tabel inventory, saya menggunakan gabungan dari Internal style sheet dan inline style yang hanya dipakai pada button delete dan edit di tabel.<br>
         <br>
-        ![main](https://github.com/AzkaNydiaEsti/food_inventory/assets/124995308/cef49eef-e470-43b6-8675-bb7fd4bd1043)<br>
+        ![main](https://github.com/AzkaNydiaEsti/food_inventory/assets/124995308/4911a13b-ad1f-4c49-a01d-f3fc3143716c)<br>
         Berikut laman daftar tabel item<br>
-        Pada laman main, saya menggunakan campuran inline dan internal style. Inline dipakai untuk membuat button menambah dan mengurangi jumlah item pada inventory dan internal dipakai untuk mengatur tampilan sisanya. Berikut tag dan class yang saya implementasikan style:<br>
-        ```
-        <style>
-            /* emoji source : https://www.quackit.com/character_sets/emoji/emoji_v3.0/unicode_emoji_v3.0_characters_all.cfm */
-            .header {
-                background-color: #91BEDC;
-                padding: 20px;
-                text-align: center;
-                font-size: 20px;
-                color: white;
-                font-family: Georgia, 'Times New Roman', Times, serif;
-            }
-            .credit {
-                padding: 2px;
-                background-color: #C7DBE9;
-                margin-top: 0%;
-                margin-bottom: 0%;
-                text-align: center;
-                font-family: 'Courier New', Courier, monospace;
-            }
-            h2 {
-                color: #efe2b8;
-            }
-            .usn {
-                text-align: center;
-                font-style: normal;
-                padding-bottom: 10px;
-                font-size: large;
-            }
-            h5 {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                font-size: medium;
-            }
-            table {
-                margin-top: 30px;
-                width: 100%;
-                margin-left:auto;
-                margin-right:auto;
-                border-spacing: 5px;
-                text-align: center;
-                border: 3px solid cadetblue
-            }
-            tr {
-                background-color: #455359;
-                color: antiquewhite
-            }
-            th, td {
-                border: 1px solid black;
-            }
-            .btn {
-                display: flexbox;
-                text-align: center;
-                justify-content: center;
-                align-items: center;
-                margin-top: 2%;
-                background-color: #ffffff;
-                color: #080710;
-                font-weight: 600;
-                cursor: pointer;
-                font-size: medium;
-                margin-left: 4%;
-                margin-right: 4%;
-            }
-            td {
-                background-color: antiquewhite;
-                color: #080710;
-            }
-
-        <button style="background-color: antiquewhite; border: black; color: #91BEDC;" type="submit">
-
-        <p style="text-align: center;">{{ total_items }}</p>
-        ```
+        Pada laman main, saya menggunakan campuran inline dan internal style. saya menggunakan internal style jika ada bagian banyak yang ingin saya aplikasikan dengan style yang sama seperti pada tabel, tetapi saya memakai inline pada elemen/tag yang memiliki spesifik style yang ingin saya aplikasikan seperti button delete dan edit. Properti yang saya pakai sama seperti pada halaman register, login, dan add item.<br>
         <br>
 
 - [x] Menjawab beberapa pertanyaan berikut pada README.md pada root folder (silakan modifikasi README.md yang telah kamu buat sebelumnya; tambahkan subjudul untuk setiap tugas).<br>
     - Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya.<br>
-        Element Selector memungkinkan kita mengubah properti pada semua elemen yang memiliki tag HTML yang sama dan umumnya dipakai jika kita ingin mengubah properti atau hal yang sama pada semua elemen yang memiliki tag yang sama supaya tidak mengulang perintah yang sama pada tag yang sama dan memboros koding. Contohnya 'p' akan memanggil semua elemen paragraf pada file html sehingga kita tidak perlu menulis koding properti yang sama pada tiap tag p yang ditemukan. Cara menggunakan elemen selector dengan menggunakan format [id_name] tanpa simbol apapun dan di diikuti oleh {} yang dapat diisi dengan properti yang ingin diubah. <br>
+        - Element Selector merupakan selektor yang digunakan untuk mengubah properti pada semua elemen yang memiliki tag yang sama dan dipakai jika kita ingin mengubah properti yang sama pada semua elemen yang memiliki tag yang sama supaya tidak mengulang perintah yang sama dan memboros koding. <br>
+        - Class Selector merupakan selector untuk mengubah properti pada elemen yang memiliki kelas tertentu dan digunakan jika ingin mengubah elemen dengan kelas sama tanpa memandang jenis tag atau elemen.
+        - ID Selector akan memilih elemen berdasarkan value dari id unik yang dimiliki oleh setiap elemen dan digunakan jika ingin mengubah properti pada elemen spesifik.<br>
+        -Attribut Selector akan memilih elemen berdasarkan atribut yang dimilik dan digunakan jika ingin mengubah properti dari elemen yang memiliki atribut spesifik.<br>
         <br>
     - Jelaskan HTML5 Tag yang kamu ketahui.<br>
-        - < header > : header dipakai untuk mendefinisikan kepala dari sebuah halaman atau bagian tertentu dalam halaman, biasanya berisi elemen seperti judul dan navigasi.<br>
-        - < table > : dipakai untuk menginisiasi pembuatan tabel di HTML<br>
-        - < tr > : tr merupakan table row dan dipakai untuk membuat baris di tabel, seberapa banyak tr yang dipakai menentukan jumlah baris pada tabel. <br>
-        - < th > : Saat membuat tabel, th dipakai untuk membuat judul header pada tabel, jumlah dari th ini yang akan menentukan seberapa banyak kolom dari tabel yang dibuat.<br>
-        - < section > : Tag ini untuk membantu mengelompokkan konten yang serupa. <br>
+        - '<header>' : header dipakai untuk mendefinisikan kepala dari sebuah halaman atau bagian tertentu dalam halaman.<br>
+        - '<table>' : dipakai untuk pembuatan tabel di HTML<br>
+        - '<tr>' : tr merupakan table row dan dipakai untuk membuat baris di tabel, seberapa banyak tr yang dipakai menentukan jumlah baris pada tabel. <br>
+        - '<title>' : mengatur judul yang ditampilkan pada halaman website.<br>
+        - '<th>' : Saat membuat tabel, th dipakai untuk membuat judul header pada tabel, jumlah dari th ini yang akan menentukan seberapa banyak kolom dari tabel yang dibuat.<br>
+        - '<section>' : Tag ini untuk membantu mengelompokkan konten yang serupa. <br>
+        - '<br>' : tag ini untuk memberikan baris kosong atau melakukan enter supaya line tidak tergabung.<br>
+        - '<h1>' : tag ini membentuk tingkatan tag-heading paling besar dan umumnya ukuran font lebih besar dari tag heading lainnya.<br>
         <br>
     - Jelaskan perbedaan antara margin dan padding.<br>
-        Margin dan padding digunakan untuk mengendalikan tata letak elemen, perbedaan dari keduanya adalah bagian mana yang mereka pengaruhi. Padding mempengaruhi ruangan didalam elemen dan mengatur jarak antar konten yang ada didalam elemen. Sedangkan, Margin memengaruhi ruangan diluar elemen dan mengatur jarak satu elemen dengan elemen lain. Pada Box Model di CSS, padding posisinya berada antara elemen dan border dan mengatur area di sekitar konten, sedangkan margin mengatur jarak di area sekitar border. <br>
+        Margin dan padding digunakan untuk mengendalikan tata letak elemen, perbedaan dari keduanya adalah bagian mana yang mereka pengaruhi. Padding mempengaruhi ruangan didalam elemen dan mengatur jarak antar konten yang ada didalam elemen. Sedangkan, Margin memengaruhi ruangan diluar elemen dan mengatur jarak satu elemen dengan elemen lain. Pada Box Model di CSS, padding posisinya berada antara konten dan border dan mengatur area di sekitar konten, sedangkan margin mengatur jarak di area sekitar border. <br>
         <br>
     - Jelaskan perbedaan antara framework CSS Tailwind dan Bootstrap. Kapan sebaiknya kita menggunakan Bootstrap daripada Tailwind, dan sebaliknya?<br>
         Terdapat perbedaan di beberapa aspek, diantaranya:<br>
         1. Tampilan yang ditawarkan<br>
             Tailwind CSS membangun tampilan dengan menggabungkan kelas-kelas utilitas yang telah didefinisikan sebelumnya, sedangkan Bootstrap menawarkan tampilan yang sudah jadi dengan gaya dan komponen yang telah didefinisikan sebelumnya.<br>
         2. Ukuran file<br>
-            Tailwind memiliki ukuran file lebih ringan karena hanya menyimpan kelas utilitas yang digunakan dalam proyek, sedangkan Bootstrap memiliki ukuran file lebih besar karena juga mencakup banyak komponen bawaan yang telah didefinisikan.<br>
+            Tailwind memiliki ukuran file lebih ringan karena hanya menyimpan kelas utilitas yang akan digunakan, sedangkan Bootstrap memiliki ukuran file lebih besar karena juga mencakup banyak komponen bawaan yang telah didefinisikan.<br>
         3. Kustomisasi<br>
-            Tailwind CSS memberikan fleksibilitas dan adaptabilitas tinggi terhadap tampilan karena dapat menyesuaikan kelas utilitas yang ada atau menambah kelas baru, tetapi Bootstrap menghasilkan tampilan yang lebih konsisten karena menggunakan komponen yang telah didefinisikan dan harus mengganti banyak aturan CSS jika ingin membuat tampilan yang unik atau berbeda.
+            Tailwind CSS memberikan fleksibilitas tinggi terhadap kustomisasi tampilan karena dapat menyesuaikan kelas utilitas yang ada atau menambah kelas baru, tetapi Bootstrap menghasilkan tampilan yang lebih konsisten karena menggunakan komponen yang telah didefinisikan dan harus mengganti banyak aturan CSS jika ingin membuat tampilan yang unik atau berbeda.
         4. Kompleksitas dalam memahami<br>
             Tailwind menyediakan kelas utilitas sehingga pengguna perlu memahami kelas utilitas yang ada dan mengerti cara menggabungkan kelas tersebut, sedangkan Bootstrap menawarkan tampilan siap jadi yang memudahkan pemula untuk mengerti karena komponen yang disediakan telah terdefinisi.<br>
             <br>
-        Berdasarkan perbedaan tersebut, Tailwind sebaiknya dipakai jika terdapat tampilan unik yang ingin dicapai yang perlu dikustomisasi dan memiliki banyak waktu untuk mengerjakannya, sedangkan Bootstrap lebih cocok jika ingin mendapat tampilan siap pakai atau tidak mau ribet mengurus tampilan dan tidak ada banyak waktu untuk membuat tampilan kustom.
+        Berdasarkan perbedaan tersebut, Tailwind sebaiknya dipakai jika terdapat tampilan unik yang ingin dicapai yang perlu dikustomisasi dan memiliki banyak waktu untuk mengerjakannya, sedangkan Bootstrap lebih cocok jika ingin menggunakan tampilan siap pakai atau tidak mau ribet mengurus tampilan dan tidak ada banyak waktu untuk membuat tampilan kustom.
         <br>
     - Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).<br>
         Pengimplementasi sudah dijabarkan di checklist di atas.<br>
