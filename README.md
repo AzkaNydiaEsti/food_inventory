@@ -621,7 +621,7 @@ Checklist untuk tugas ini adalah sebagai berikut:<br>
         Pada laman login, saya membuat tampilan menggunakan style dengan metode Internal style sheet. Style tersebut saya taruh didalam block meta dan saya mengaplikasi style pada 2 kelas baru dan 3 tag, yaitu class box dan login_btn, serta tag input, label, dan h1. Pada laman ini, saya menggunakan properti height, widht, align, padding, margin, font, color, display, dan border untuk merubah penampilan login dan menambahkan box-shadow supaya login terlihat seperti kotak yang mengambang.<br>
         <br>
 
-        ![register](AzkaNydiaEsti/food_inventory/assets/124995308/0e653056-3d70-49b8-b152-3f19f79b66b6))<br>
+        ![register](https://github.com/AzkaNydiaEsti/food_inventory/assets/124995308/8fbff4f8-3744-4217-891f-9df21e55547e)<br>
         Berikut laman register<br>
         Saya menggunakan properti yang sama dari laman login untuk laman registrasi, perbedaannya hanya di jumlah tag yang diimplementasi style, bentuk tombol, dan jumlah input yang diminta. Pada laman ini, saya hanya mengaplikasikan style pada kelas box untuk tampilan tag div untuk input login di halaman, kelas btn yang diaplikasi di tag input, kelas background untuk latar belakang halaman, dan tag h1 sebagai judul laman di atas input.<br>
         <br>
@@ -647,14 +647,14 @@ Checklist untuk tugas ini adalah sebagai berikut:<br>
         -Attribut Selector akan memilih elemen berdasarkan atribut yang dimilik dan digunakan jika ingin mengubah properti dari elemen yang memiliki atribut spesifik.<br>
         <br>
     - Jelaskan HTML5 Tag yang kamu ketahui.<br>
-        - '<header>' : header dipakai untuk mendefinisikan kepala dari sebuah halaman atau bagian tertentu dalam halaman.<br>
-        - '<table>' : dipakai untuk pembuatan tabel di HTML<br>
-        - '<tr>' : tr merupakan table row dan dipakai untuk membuat baris di tabel, seberapa banyak tr yang dipakai menentukan jumlah baris pada tabel. <br>
-        - '<title>' : mengatur judul yang ditampilkan pada halaman website.<br>
-        - '<th>' : Saat membuat tabel, th dipakai untuk membuat judul header pada tabel, jumlah dari th ini yang akan menentukan seberapa banyak kolom dari tabel yang dibuat.<br>
-        - '<section>' : Tag ini untuk membantu mengelompokkan konten yang serupa. <br>
-        - '<br>' : tag ini untuk memberikan baris kosong atau melakukan enter supaya line tidak tergabung.<br>
-        - '<h1>' : tag ini membentuk tingkatan tag-heading paling besar dan umumnya ukuran font lebih besar dari tag heading lainnya.<br>
+        - < header > : header dipakai untuk mendefinisikan kepala dari sebuah halaman atau bagian tertentu dalam halaman.<br>
+        - < table > : dipakai untuk pembuatan tabel di HTML<br>
+        - < tr > : tr merupakan table row dan dipakai untuk membuat baris di tabel, seberapa banyak tr yang dipakai menentukan jumlah baris pada tabel. <br>
+        - < title > : mengatur judul yang ditampilkan pada halaman website.<br>
+        - < th > : Saat membuat tabel, th dipakai untuk membuat judul header pada tabel, jumlah dari th ini yang akan menentukan seberapa banyak kolom dari tabel yang dibuat.<br>
+        - < section > : Tag ini untuk membantu mengelompokkan konten yang serupa. <br>
+        - < br > : tag ini untuk memberikan baris kosong atau melakukan enter supaya line tidak tergabung.<br>
+        - < h1 > : tag ini membentuk tingkatan tag-heading paling besar dan umumnya ukuran font lebih besar dari tag heading lainnya.<br>
         <br>
     - Jelaskan perbedaan antara margin dan padding.<br>
         Margin dan padding digunakan untuk mengendalikan tata letak elemen, perbedaan dari keduanya adalah bagian mana yang mereka pengaruhi. Padding mempengaruhi ruangan didalam elemen dan mengatur jarak antar konten yang ada didalam elemen. Sedangkan, Margin memengaruhi ruangan diluar elemen dan mengatur jarak satu elemen dengan elemen lain. Pada Box Model di CSS, padding posisinya berada antara konten dan border dan mengatur area di sekitar konten, sedangkan margin mengatur jarak di area sekitar border. <br>
