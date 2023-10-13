@@ -678,3 +678,189 @@ Checklist untuk tugas ini adalah sebagai berikut:<br>
 - [x] Melakukan add-commit-push ke GitHub.<br>
 
 ---
+
+# Tugas 6 Checklist
+
+---
+
+Checklist untuk tugas ini adalah sebagai berikut:<br>
+
+- [x] Mengubah tugas 5 yang telah dibuat sebelumnya menjadi menggunakan AJAX.<br>
+
+    - [x] AJAX GET<br>
+        - [x] Ubahlah kode card data item agar dapat mendukung AJAX GET.<br>
+            Untuk mengubah tabel menjadi card, saya menggantikan tabel dengan menggunakan div dan attribut id untuk memanggil card. id untuk card yang saya buat adala ```item_card```<br>
+            ```
+            <div id="item_card" class="inventory row row-cols-1 row-cols-md-3 g-4"></div>
+            ```
+            <br>
+
+        - [x] Lakukan pengambilan task menggunakan AJAX GET.<br>
+            Pertama, saya membuat sebuah fungsi json get di main.py dan menambahkan path ke dalam url.py
+            ```
+             def get_item_json(request):
+                product_item = Barang.objects.filter(user=request.user)
+                return HttpResponse(serializers.serialize('json', product_item))
+            ```
+            Lalu, saya menambahkan script di bagian bawah main.html sebelum {% endblock content %}<br>
+            ```
+            <script>
+                async function getItem() {
+                    return fetch("{% url 'main:get_item_json' %}").then((res) => res.json())
+                }
+            </script>
+            ```
+            <br>
+
+    - [x] AJAX POST<br>
+        - [x] Buatlah sebuah tombol yang membuka sebuah modal dengan form untuk menambahkan item.<br>
+            Pertama, Setelah saya menggantikan tabel menjadi ajax, saya membuat tombol ```add item``` yang akan dipakai untuk memanggil modal untuk dimasukkan inputnya.<br>
+            ```
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" >Add Item</button>
+            ```
+            <br>
+
+        - [x] Modal di-trigger dengan menekan suatu tombol pada halaman utama. Saat penambahan item berhasil, modal harus ditutup dan input form harus dibersihkan dari data yang sudah dimasukkan ke dalam form sebelumnya.<br>
+            lalu, saya membuat modal di main.html yang disesuaikan dengan input yang dibutuhkan untuk meminta input item baru. Pada modal ini, saya meminta 5 input dan ada tombol add-item dan close untuk menutup dan menghapus isi input form.<br>
+            ```
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Item</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="form" onsubmit="return false;">
+                                {% csrf_token %}
+                                <div class="mb-3">
+                                    <label for="name" class="col-form-label">Name:</label>
+                                    <input type="text" class="form-control" id="name" name="name"></input>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="quality" class="col-form-label">Quality:</label>
+                                    <input type="text" class="form-control" id="quality" name="quality"></input>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="type" class="col-form-label">Type:</label>
+                                    <input type="text" class="form-control" id="type" name="type"></input>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="description" class="col-form-label">Description:</label>
+                                    <textarea class="form-control" id="description" name="description"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="amount" class="col-form-label">Amount:</label>
+                                    <input type="number" class="form-control" id="amount" name="amount"></input>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" id="button_add" data-bs-dismiss="modal">Add Item</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            ```
+
+        - [x] Buatlah fungsi view baru untuk menambahkan item baru ke dalam basis data.<br>
+            Untuk membuat fungsi view baru, saya mengimpor csrf_exempt dan membuat sebuah fungsi pada views.py untuk menambahkan produk ke dalam card dengan menggunakan method POST dan membuat variabel sesuai input yang sama dengan modal. Fungsi ini yang akan menambahkan item ke dalam basis data.<br>
+            ```
+            from django.views.decorators.csrf import csrf_exempt
+            ```
+            ```
+            @csrf_exempt
+            def create_ajax(request):
+                if request.method == 'POST':
+                    name = request.POST.get("name")
+                    quality = request.POST.get("quality")
+                    type = request.POST.get("type")
+                    amount = request.POST.get("amount")
+                    description = request.POST.get("description")
+                    user = request.user
+
+                    new_item = Barang(name=name, quality=quality, type=type, amount=amount, description=description, user=user)
+                    new_item.save()
+
+                    return HttpResponse(b"CREATED", status=201)
+
+                return HttpResponseNotFound()
+            ```
+
+        - [x] Buatlah path /create-ajax/ yang mengarah ke fungsi view yang baru kamu buat.<br>
+            Setelah saya membuat fungsi create_ajax di views.py, saya melakukan import fungsi tersebut dan menambahkan pathnya ke dalam urlpattern.<br>
+            ```
+            path('create-ajax/', create_ajax, name='create_ajax')
+            ```
+
+        - [x] Hubungkan form yang telah kamu buat di dalam modal kamu ke path /create-ajax/.<br>
+            Saya menghubungkan form dengan menambah event_listener menggunakan fungsi addItem pada script, jadi laman input modal akan keluar saat tombol ```add item``` diklik.<br>
+            ```
+            function addItem() {
+                fetch("{% url 'main:create_ajax' %}", {
+                    method: "POST",
+                    body: new FormData(document.querySelector('#form'))
+                }).then(refreshItem)
+
+                document.getElementById("form").reset()
+                return false
+            }
+
+            document.getElementById("button_add").onclick = addItem
+            ```
+
+        - [x] Lakukan refresh pada halaman utama secara asinkronus untuk menampilkan daftar item terbaru tanpa reload halaman utama secara keseluruhan.<br>
+            untuk melakukan refresh automatis setiap kali input, saya menambahkan fungsi baru di script main.html yang akan mengupdate card dengan input paling baru.<br>
+            ```
+            async function refreshItem() {
+                document.getElementById("item_card").innerHTML = ""
+                const items = await getItem()
+                const dec = "{% url 'main:dec_amount' 0 %}"
+                const inc = "{% url 'main:inc_amount' 0 %}"
+                const del = "{% url 'main:delete_item' 0 %}"
+                let htmlString = ``
+                items.forEach((item) => {
+                    htmlString += `\n
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                            <h5 class="card-title">${item.fields.name}</h5>
+                            <h6 class="card-text">${item.fields.quality} | ${item.fields.type}</h6>
+                            <p class="card-text">${item.fields.description}</p>
+                            <p class="card-text" >Amount: ${item.fields.amount}</p>
+                            </div>
+                        </div>
+                    </div>\n` 
+                })
+                
+                document.getElementById("item_card").innerHTML = htmlString
+            }
+
+            refreshItem()
+            ```
+            <br>
+
+    - [x] Melakukan perintah collectstatic.<br>
+        - Perintah ini bertujuan untuk mengumpulkan file static dari setiap aplikasi kamu ke dalam suatu folder yang dapat dengan mudah disajikan pada produksi.<br>
+
+- [x] Menjawab beberapa pertanyaan berikut pada README.md pada root folder (silakan modifikasi README.md yang telah kamu buat sebelumnya; tambahkan subjudul untuk setiap tugas).<br>
+    - Jelaskan perbedaan antara asynchronous programming dengan synchronous programming.<br>
+        Perbedaan utama kedua programming tersebut adalah urutan mereka dalam menjalankan program. synchronus programming mengharus suatu task untuk selesai dahulu sebelum task berikutnya berjalan. Sedangkan, asynchronus programming membolehkan task untuk mulai atau selesai berbarengan dan tidak perlu menunggu task sebelumnya untuk selesai sebelum memulai. Pada kedua programming, asynchronus programming sangatlah bermanfaat jika sebuah task memakan waktu terlalu lama dan menunda pengerjaan task setelahnya.<br>
+    - Dalam penerapan JavaScript dan AJAX, terdapat penerapan paradigma event-driven programming. Jelaskan maksud dari paradigma tersebut dan sebutkan salah satu contoh penerapannya pada tugas ini.<br>
+        paradigma event-driven programming adalah ketika suatu alur program dijalankan sesuai dengan event yang telah dilakukan sebelumnya, seperti input pengguna, sebuah button diklik, dan lain-lain. Pada tugas ini, saat kita klik tombol add Item, maka JavaScript akan mendeteksi event yang terjadi dengan event listener, lalu akan menjalankan addItem sehingga laman tersebut muncul dan dapat kita isi dengan input item baru.<br>
+    - Jelaskan penerapan asynchronous programming pada AJAX.<br>
+        AJAX (Asynchronous JavaScript and XML) menggunakan pendekatan asynchronus yang memungkinkan web untuk menerima data dari server secara asynchronus tanpa menggangu laman web secara keseluruhan sehingga pengguna tidak perlu refresh web ulang untuk melihat laman terupdate.<br>
+    - Pada PBP kali ini, penerapan AJAX dilakukan dengan menggunakan Fetch API daripada library jQuery. Bandingkanlah kedua teknologi tersebut dan tuliskan pendapat kamu teknologi manakah yang lebih baik untuk digunakan.<br>
+        - Fetch API <br>
+            Fetch API merupakan bagian dari JavaScript ES6 dan tidak memerlukan unduhan tambahan sehingga ukurannya lebih kecil. Hal ini membuat Fetch API menghemat bandwich dan memiliki peforma lebih bagus. Fetch Api juga kompatibel dengan browser modern dan promise-based sehingga dapat mengelola aliran eksekusi dan menangani asinkron lebih baik.<br>
+        - jQuery<br>
+            jQuery merupakan library yang sudah ada sejak lama dan memiliki ukuran lebih besar. Hal ini membuat jQuery kurang efisien dibanding Fetch Api. Namun, jQuery memiliki banyak fitur tambahan dan sintaksis yang mudah digunakan sehingga dapat memudahkan dalam pengembangan web. Selain itu, jQuery juga masih kompatible dengan browser lama.<br>
+        Saya pribadi lebih memilih Fetch Api karena lebih kompatible dan cocok jika saya ingin menggunakan browser modern untuk mengembangkan web. Fetch Api juga lebih kecil ukurannya, lebih ringan, dan efisien. <br>
+    - Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).<br>
+        Pengimplementasi sudah dijabarkan di checklist atas.<br>
+
+- [x] Melakukan add-commit-push ke GitHub.<br>
+
+- [x] Melakukan deployment ke PaaS PBP Fasilkom UI dan sertakan tautan aplikasi pada file README.md.<br>
+    DOKKU_APP_NAME = UsernameSSO-tugas<br>

@@ -1,7 +1,4 @@
 {% extends 'base.html' %}
-
-<html>
-<body>
 {% block content %}
 <style>
   /* emoji source : https://www.quackit.com/character_sets/emoji/emoji_v3.0/unicode_emoji_v3.0_characters_all.cfm */
@@ -80,21 +77,10 @@
     background-color: antiquewhite;
     color: #080710;
   }
-  /* table tr:last-child {
-      background-color: #4bc0fffe;
-    } */
 
 </style>
-<div class="usn">	&#x1F497 Currently logged in as <b>{{ nama }}</b> &#x1F497 </div>
 
-<header class="header">
-  <img src="https://i.ibb.co/ctvgk1W/genshin-logo.png" alt="genshin-logo">
-</header>
-
-
-<p style="text-align: center;">{{ total_items }}</p>
-
-<table>
+<!-- <table>
   <tr>
     <th>Name</th>
     <th>Quality</th>
@@ -140,32 +126,121 @@
           </form>
     </tr>
   {% endfor %}
-</table>
+</table> -->
 
-<br />
-<div class="btn">
-  <a href="{% url 'main:add_item' %}">
-      <button class="btn">
-          Add New Item
-      </button>
-  </a>
+<div class="usn">	&#x1F497 Currently logged in as <b>{{ nama }}</b> &#x1F497 </div>
 
-  <a href="{% url 'main:logout' %}">
-    <button class="btn">
-        Logout
-    </button>
-  </a>
-</div>
+<header class="header">
+  <img src="https://i.ibb.co/ctvgk1W/genshin-logo.png" alt="genshin-logo">
+</header>
+
+<p style="text-align: center;">{{ total_items }}</p>
+
+<div id="item_card" class="inventory row row-cols-1 row-cols-md-3 g-4"></div>
+
+<center>
+  <div style="align-items: center; padding: 10px;">
+    <span style="display: inline;">
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" >Add Item</button>
+      <a href="{% url 'main:logout' %}">
+        <button class="btn btn-primary">
+            Logout
+        </button>
+      </a>
+    </span>
+  </div>
+</center>
 
 <h5>&#x231B Sesi terakhir login: {{ last_login }} &#x231B</h5>
 
-<div class="credit">
+<footer class="credit">
   <h4>By</h4>
   <h4>{{ creator_name }} - {{ npm }}</h4>
   <h4>{{ class }}</h4>
+</footer>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Item</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <form id="form" onsubmit="return false;">
+                  {% csrf_token %}
+                  <div class="mb-3">
+                      <label for="name" class="col-form-label">Name:</label>
+                      <input type="text" class="form-control" id="name" name="name"></input>
+                  </div>
+                  <div class="mb-3">
+                    <label for="quality" class="col-form-label">Quality:</label>
+                    <input type="text" class="form-control" id="quality" name="quality"></input>
+                  </div>
+                  <div class="mb-3">
+                    <label for="type" class="col-form-label">Type:</label>
+                    <input type="text" class="form-control" id="type" name="type"></input>
+                  </div>
+                  <div class="mb-3">
+                      <label for="description" class="col-form-label">Description:</label>
+                      <textarea class="form-control" id="description" name="description"></textarea>
+                  </div>
+                  <div class="mb-3">
+                    <label for="amount" class="col-form-label">Amount:</label>
+                    <input type="number" class="form-control" id="amount" name="amount"></input>
+                </div>
+              </form>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" id="button_add" data-bs-dismiss="modal">Add Item</button>
+          </div>
+      </div>
+  </div>
 </div>
 
-{% endblock content %}
-</body>
+<script>
+  async function getItem() {
+    return fetch("{% url 'main:get_item_json' %}").then((res) => res.json())
+  }
 
-</html>
+  async function refreshItem() {
+    document.getElementById("item_card").innerHTML = ""
+    const items = await getItem()
+    const dec = "{% url 'main:dec_amount' 0 %}"
+    const inc = "{% url 'main:inc_amount' 0 %}"
+    const del = "{% url 'main:delete_item' 0 %}"
+    let htmlString = ``
+      items.forEach((item) => {
+        htmlString += `\n
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">${item.fields.name}</h5>
+              <h6 class="card-text">${item.fields.quality} | ${item.fields.type}</h6>
+              <p class="card-text">${item.fields.description}</p>
+              <p class="card-text">Amount: ${item.fields.amount}</p>
+            </div>
+          </div>
+        </div>\n` 
+    })
+    
+    document.getElementById("item_card").innerHTML = htmlString
+  }
+
+  refreshItem()
+
+  function addItem() {
+      fetch("{% url 'main:create_ajax' %}", {
+          method: "POST",
+          body: new FormData(document.querySelector('#form'))
+      }).then(refreshItem)
+
+      document.getElementById("form").reset()
+      return false
+  }
+
+  document.getElementById("button_add").onclick = addItem
+
+</script>
+{% endblock content %}
