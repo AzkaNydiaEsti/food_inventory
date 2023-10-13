@@ -15,6 +15,7 @@ https://gi-foodinventory.adaptable.app/main/
 - [Tugas 3](#tugas-3-checklist)
 - [Tugas 4](#tugas-4-checklist)
 - [Tugas 5](#tugas-5-checklist)
+- [Tugas 6](#tugas-6-checklist)
 
 ---
 
@@ -833,7 +834,7 @@ Checklist untuk tugas ini adalah sebagai berikut:<br>
                         </div>
                     </div>\n` 
                 })
-                
+
                 document.getElementById("item_card").innerHTML = htmlString
             }
 
