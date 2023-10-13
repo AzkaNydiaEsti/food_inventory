@@ -5,7 +5,7 @@
 ---
 # Genshin Food Inventory
 
-https://gi-foodinventory.adaptable.app/main/
+https://azka-nydia-tugas.pbp.cs.ui.ac.id
 
 ---
 
