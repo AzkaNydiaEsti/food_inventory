@@ -153,3 +153,10 @@ def create_ajax(request):
 
     return HttpResponseNotFound()
 
+@csrf_exempt
+def delete_ajax(request, id):
+    if request.method == 'DELETE':
+        item = Barang.objects.get(id=id)
+        item.delete()
+    
+    return HttpResponse(redirect('main:show_main'))
