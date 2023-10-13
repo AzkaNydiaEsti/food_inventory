@@ -830,6 +830,15 @@ Checklist untuk tugas ini adalah sebagai berikut:<br>
                             <h6 class="card-text">${item.fields.quality} | ${item.fields.type}</h6>
                             <p class="card-text">${item.fields.description}</p>
                             <p class="card-text" >Amount: ${item.fields.amount}</p>
+                            <a href="/inc_amount/${item.pk}/">
+                                <button class="button button1" id="adjust-btn" type="submit">+</button>
+                            </a>
+                            <a href="/dec_amount/${item.pk}/">
+                                <button class="button button1" id="adjust-btn" type="submit">-</button>
+                            </a>
+                            <a href="/delete_item/${item.pk}/">
+                                <button class="button button1" id="adjust-btn" type="submit">Delete</button>
+                            </a>
                             </div>
                         </div>
                     </div>\n` 
